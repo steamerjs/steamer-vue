@@ -13,6 +13,5 @@ if(!window.Promise) {
 /* eslint-disable no-new */
 new Vue({
 	el: '#page',
-	store,
 	render: h => h(Page)
 })

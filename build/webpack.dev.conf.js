@@ -33,7 +33,6 @@ if(process.env.NODE_ENV ==="production" || config.multPages.curpage == 'all'){
 }else { 
     entries[config.multPages.curpage] = config.multPages.htmlEntries[config.multPages.curpage];
 }
-
 for (var key in entries) {
   // 配置生成的html文件，定义路径等
     var conf = {
