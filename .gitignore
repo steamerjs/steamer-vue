@@ -1,4 +1,11 @@
+node_modules
+node_modules.7z
+dist
+.svn
+build
+dev
 .DS_Store
-node_modules/
-dist/
+webpack_cache
+.webpack_cache
+.happypack
 npm-debug.log
