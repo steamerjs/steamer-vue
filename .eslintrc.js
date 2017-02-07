@@ -5,42 +5,42 @@ module.exports = {
         "commonjs": true,
         "es6": true
     },
-    "extends": "eslint:recommended",
-    "parser": "babel-eslint",
-    "parserOptions": {
-        "ecmaFeatures": {
-            "experimentalObjectRestSpread": true,
-            "jsx": true,
-            "modules": true,
-            "spread" : true,
-            "restParams" : true
-        },
-        "sourceType": "module"
-    },
+    "extends": "standard",
+    // "parserOptions": {
+    //     "ecmaFeatures": {
+    //         "experimentalObjectRestSpread": true,
+    //         "jsx": true,
+    //         "modules": true,
+    //         "spread" : true,
+    //         "restParams" : true
+    //     },
+    //     "sourceType": "module"
+    // },
     "plugins": [
-        "babel",
-        "react",
+        "html",
+        // "react",
     ],
     rules: {
-        // "indent": [2, 'tab', {SwitchCase: 1, VariableDeclarator: 1, ObjectExpression: 2}],
-        "no-console": 0,
-        "no-redeclare": 0,
-        "no-sparse-arrays": 0,
-        "one-var-declaration-per-line": [2, "always"],
-        "no-mixed-spaces-and-tabs": 0,
-        "semi": 2,
-        "react/jsx-uses-vars": 1,
-        "no-undef": 1,
-        "no-unused-vars": [1, {"args": "none", "varsIgnorePattern": "React|Preact|Root|h"}],
-        "babel/new-cap": [1, {"capIsNew": false}],
-        // "babel/object-curly-spacing": 1,
-        "babel/no-await-in-loop": 1,
-        "babel/flow-object-type": 1,
-        "babel/no-invalid-this": 0
+        "no-multiple-empty-lines": [2, { "max": 2 }],     // 最多两行空行，少了不够，多了没用
+        "space-before-function-paren": [0, "always"],     // 不关心函数括号前是否有空格
+        "comma-dangle": [2, "only-multiline"],            // 只有多行的时候才允许尾部的多余逗号
+        "indent": ["error", 4, { "SwitchCase": 1 }],      // 4空格缩进，Switch case有缩进
+        "no-new": [0],                                    // 用vue的时候，免不了new Vue但是不赋值
+        "no-multi-spaces": [2, {
+            "exceptions": {
+                "VariableDeclarator": true,                 // 变量声明可以有多空格，来格式化
+                "AssignmentExpression": true,               // 赋值操作可以有多控制，来格式化
+            }
+        }]
+        // "one-var-declaration-per-line": [2, "always"],
+        // "no-unused-vars": [1, {"args": "none", "varsIgnorePattern": "React|Preact|Root|h"}],
+        // "babel/new-cap": [1, {"capIsNew": false}],
+        // "babel/no-await-in-loop": 1,
     },
     "globals": {
-        "React": true,
-        "ReactDOM": true,
         "$": true,
+        "mqq": true,                                      // mqq
+        "QReport": true,                                   // QReport
+        "Vue": true
     }
 };

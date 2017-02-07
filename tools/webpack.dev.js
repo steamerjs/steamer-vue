@@ -14,19 +14,30 @@ var HtmlResWebpackPlugin = require('html-res-webpack-plugin'),
     HappyPack = require('happypack'),
     SpritesmithPlugin = require('webpack-spritesmith'),
     PostcssImport = require('postcss-import'),
-    Autoprefixer = require('autoprefixer');
+    Autoprefixer = require('autoprefixer'),
+    StylelintWebpackPlugin = require('stylelint-webpack-plugin')
 
 var devConfig = {
     entry: configWebpack.entry,
     output: {
-        publicPath: config.webserver,
+        publicPath: config.route,
         path: path.join(configWebpack.path.dev),
         filename: "[name].js",
         chunkFilename: "chunk/[name].js",
     },
     module: {
+        preLoaders: [{
+            test: /\.(js|vue)$/,
+            loader: 'eslint',
+            include: path.resolve(configWebpack.path.src)
+        }],
         loaders: [
-            { 
+            {
+                test: /\.vue$/,
+                loader: 'vue',
+                exclude: /node_modules/
+            },
+            {
                 test: /\.js$/,
                 loader: 'happypack/loader?id=jsHappy',
                 // loader: 'babel',
@@ -34,7 +45,7 @@ var devConfig = {
                 //     cacheDirectory: './.webpack_cache/',
                 //     plugins: ['transform-decorators-legacy'],
                 //     presets: [
-                //         'es2015-loose', 
+                //         'es2015-loose',
                 //         'react',
                 //     ]
                 // },
@@ -48,7 +59,7 @@ var devConfig = {
             // },
             {
                 test: /\.less$/,
-                loader: "happypack/loader?id=lessHappy",         
+                loader: "happypack/loader?id=lessHappy",
                 //ExtractTextPlugin.extract("style-loader", "css-loader!less-loader"),
                 // include: [path.resolve(configWebpack.path.src), 'node_modules'],
             },
@@ -70,13 +81,15 @@ var devConfig = {
             },
         ],
         noParse: [
-            
+
         ]
     },
-    postcss: function(webpack) { 
+    postcss: function(webpack) {
         return [
             PostcssImport(),
-            Autoprefixer() 
+            Autoprefixer({
+                browsers: ['iOS 7', '> 0.1%', 'android 2.1']
+            })
         ]
     },
     resolve: {
@@ -100,6 +113,14 @@ var devConfig = {
                 to: 'libs/[name].[ext]'
             }
         ]),
+        new StylelintWebpackPlugin({
+            configFile: path.resolve(__dirname, '../.stylelintrc.js'),
+            context: 'inherits from webpack',
+            files: '../src/**/*.@(?(s)?(a|c)ss|vue|html)',
+            failOnError: false,
+            lintDirtyModulesOnly: true,                 // 只在改变的时候lint，其他时候跳过
+            extractStyleTagsFromHtml: true,
+        }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new HappyPack({
@@ -113,10 +134,7 @@ var devConfig = {
             loaders: [{
                 path: 'babel',
                 query: {
-                    cacheDirectory: './.webpack_cache/',
-                    presets: [
-                        ["es2015", {"loose": true}],
-                    ]
+                    cacheDirectory: './.webpack_cache/'
                 },
             }],
         }),
@@ -149,7 +167,7 @@ configWebpack.html.forEach(function(page, key) {
             return tpl;
         }
     });
-}); 
+});
 
 configWebpack.sprites.forEach(function(folder) {
     utils.addPlugins(devConfig, SpritesmithPlugin, {

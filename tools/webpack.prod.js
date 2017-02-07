@@ -29,8 +29,18 @@ var prodConfig = {
         chunkFilename: "chunk/[name]-" + configWebpack.chunkhash + ".js",
     },
     module: {
+        preLoaders: [{
+            test: /\.(js|vue)$/,
+            loader: 'eslint',
+            include: path.resolve(configWebpack.path.src)
+        }],
         loaders: [
-            { 
+            {
+                test: /\.vue$/,
+                loader: 'vue',
+                exclude: /node_modules/
+            },
+            {
                 test: /\.js$/,
                  loader: 'happypack/loader?id=jsHappy',
                 // loader: 'babel',
@@ -38,20 +48,20 @@ var prodConfig = {
                 //     cacheDirectory: './.webpack_cache/',
                 //     plugins: ['transform-decorators-legacy'],
                 //     presets: [
-                //         'es2015-loose', 
+                //         'es2015-loose',
                 //         'react',
                 //     ]
                 // },
                 exclude: /node_modules/,
             },
-            // { 
+            // {
             //     test: /\.js$/,
             //     loader: 'babel',
             //     query: {
             //         // cacheDirectory: './.webpack_cache/',
             //         plugins: ['transform-decorators-legacy'],
             //         presets: [
-            //             'es2015-loose', 
+            //             'es2015-loose',
             //             'react',
             //         ]
             //     },
@@ -88,13 +98,15 @@ var prodConfig = {
             },
         ],
         noParse: [
-            
+
         ]
     },
-    postcss: function(webpack) { 
+    postcss: function(webpack) {
         return [
             PostcssImport(),
-            Autoprefixer() 
+            Autoprefixer({
+                browsers: ['iOS 7', '> 0.1%', 'android 2.1']
+            })
         ]
     },
     resolve: {
@@ -130,10 +142,7 @@ var prodConfig = {
             loaders: [{
                 path: 'babel',
                 query: {
-                    cacheDirectory: './.webpack_cache/',
-                    presets: [
-                        ["es2015", {"loose": true}],
-                    ]
+                    cacheDirectory: './.webpack_cache/'
                 },
             }],
         }),
@@ -149,8 +158,8 @@ var prodConfig = {
         //     }
         // }),
         // new UglifyJsParallelPlugin({
-        //     workers: os.cpus().length, // usually having as many workers as cpu cores gives good results 
-        //     // other uglify options 
+        //     workers: os.cpus().length, // usually having as many workers as cpu cores gives good results
+        //     // other uglify options
         //     compress: {
         //         warnings: false,
         //     },
@@ -188,7 +197,7 @@ configWebpack.html.forEach(function(page, key) {
             collapseWhitespace: true,
         }
     });
-}); 
+});
 
 configWebpack.sprites.forEach(function(folder) {
     utils.addPlugins(prodConfig, SpritesmithPlugin, {

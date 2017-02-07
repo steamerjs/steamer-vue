@@ -39,7 +39,6 @@ npm run dist
 ## 目录结构
 
 ```javascript
-.steamer -- steamer配置
 dist    -- 生产环境代码
 |
 src     -- 源代码
