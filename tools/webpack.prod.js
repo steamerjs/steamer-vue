@@ -157,13 +157,16 @@ var prodConfig = {
         //         warnings: false
         //     }
         // }),
-        // new UglifyJsParallelPlugin({
-        //     workers: os.cpus().length, // usually having as many workers as cpu cores gives good results
-        //     // other uglify options
-        //     compress: {
-        //         warnings: false,
-        //     },
-        // }),
+        new UglifyJsParallelPlugin({
+            workers: os.cpus().length, // usually having as many workers as cpu cores gives good results
+            // other uglify options
+            compress: {
+                warnings: false
+            },
+            output: {
+                semicolons: false               // 去掉分号，保留行数
+            }
+        }),
         new WebpackMd5Hash(),
         new webpack.NoErrorsPlugin(),
         new AkWebpackPlugin({
