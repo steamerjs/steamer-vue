@@ -1,5 +1,5 @@
-# steamer-simple
-一个基础而无框架的脚手架
+# steamer-vue
+一个针对vue的脚手架
 
 ## 使用
 
@@ -23,6 +23,10 @@ npm run dist
 
 ```
 
+## 入口
+127.0.0.1:[端口号]/[config.route路径]/[html入口] 。
+
+例如： 127.0.0.1:9000/steamer-vue/index.html
 
 ## 基本配置
 
@@ -34,7 +38,6 @@ npm run dist
 * `config.port`  开发环境服务器端口
 * `config.route` 开发环境访问的路径
 ```
-
 
 ## 目录结构
 
@@ -51,15 +54,13 @@ src     -- 源代码
 |      |    |———— btn
 |      |    |———— list
 |      |
-|      js -- 公共js目录
+|      common -- 公共js目录
 |      |—— common 公共js
 |      |
 |      libs -- 公共js库，如zepto, jquery等
 |      |
 |      |
 |      page —— 页面逻辑
-|      |
-|      |—— common 公共页面逻辑
 |      |—— index 首页逻辑
 |      |
 |      |
@@ -190,26 +191,6 @@ utils.filterJsFile(configWebpack.entry, ["js/index"])
 * 腾讯新闻主页spa:
   - `localhost:9000/spa.html`
   - `localhost:9000/news/spa.html`
-
-
-### 生产环境
-* 启动: `npm run dist`
-
-* 代理配置
-* Charles Map Local: 
-  - `localhost:9000` => `/dist/` 匹配本地html资源
-  - `localhost:8000` => `/dist/` 匹配本地除cdn资源 
-
-* Fiddler Willow Rule:
- - `regex:^https?:\/\/localhost:9000\/(.*)$`    `\local path\dist\$1`
- - `regex:^https?:\/\/localhost:8000\/(.*)$`    `\local path\dist\$1`
-
- * 腾讯新闻主页:
-  - `localhost:9000/index.html` 
-
-* 腾讯新闻主页spa:
-  - `localhost:9000/spa.html`
-
 
 ## 文章参考
 * [webpack使用优化（基本篇）](https://github.com/lcxfs1991/blog/issues/2)
