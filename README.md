@@ -182,15 +182,12 @@ utils.filterJsFile(configWebpack.entry, ["js/index"])
 
 
 ### 开发环境
-* r启动：`npm start`
+* 启动：`npm start`
 
-* 腾讯新闻主页:
+* demo页面:
   - `localhost:9000/index.html` 
-  - `localhost:9000/news/index.html` (`webpack.server.js`里映射路径到news)
+  - `localhost:9000/steamervue/index.html` (`webpack.server.js`里映射路径到news)
 
-* 腾讯新闻主页spa:
-  - `localhost:9000/spa.html`
-  - `localhost:9000/news/spa.html`
 
 ## 文章参考
 * [webpack使用优化（基本篇）](https://github.com/lcxfs1991/blog/issues/2)
