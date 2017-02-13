@@ -34,7 +34,6 @@
     "vue": "^2.1.10"
   },
   "devDependencies": {
-    "ak-webpack-plugin": "^1.1.0",
     "autoprefixer": "^6.5.4",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
