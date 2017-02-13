@@ -172,13 +172,12 @@ utils.filterJsFile(configWebpack.entry, ["js/index"])
 `app.use('/api/', proxy('http://localhost:3001'));`
 
 
+## 支持开发环境与生产环境分离
 
 ### 文件目录
 * 单页文件可参考 src/page/index
-* 单页应用可参考 src/page/spa
 * 开发环境一般都写在内存，如果生产文件，会放到dev文件夹下
 * 生产环境最终文件生成在dist文件夹下
-
 
 
 ## 文章参考
