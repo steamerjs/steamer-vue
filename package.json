@@ -1,8 +1,8 @@
 {
-  "name": "steamer-simple",
-  "version": "1.0.0",
-  "description": "simple-webpack-boilerplate",
-  "main": "./.steamer/steamer-simple.js",
+  "name": "steamer-vue",
+  "version": "1.0.1",
+  "description": "vue-webpack-boilerplate",
+  "main": "./.steamer/steamer-vue.js",
   "scripts": {
     "start": "node ./tools/start.js",
     "dist": "node ./tools/dist.js",
@@ -12,10 +12,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SteamerTeam/steamer-simple.git"
+    "url": "git+https://github.com/SteamerTeam/steamer-vue.git"
   },
   "keywords": [
-    "simple",
+    "vue",
     "webpack",
     "steamerjs",
     "boilerplate",
@@ -24,9 +24,9 @@
   "author": "SteamerTeam",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SteamerTeam/steamer-simple/issues"
+    "url": "https://github.com/SteamerTeam/steamer-vue/issues"
   },
-  "homepage": "https://github.com/SteamerTeam/steamer-simple#readme",
+  "homepage": "https://github.com/SteamerTeam/steamer-vue#readme",
   "browserslist": [
     "last 5 versions"
   ],
@@ -34,12 +34,12 @@
     "vue": "^2.1.10"
   },
   "devDependencies": {
-    "ak-webpack-plugin": "^1.0.0",
     "autoprefixer": "^6.5.4",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-3": "^6.22.0",
     "browserslist": "^1.5.1",
     "caniuse-db": "^1.0.30000602",
     "clean-webpack-plugin": "^0.1.14",

@@ -19,10 +19,12 @@ module.exports = {
         }],
         "rule-nested-empty-line-before": null,
         // "no-missing-end-of-source-newline": null,
-        // "no-eol-whitespace": null,
+        "no-eol-whitespace": [true, {
+            ignore: ["empty-lines"]         // 允许有空格的空行
+        }],
         "no-empty-source": null,
         "media-feature-name-no-unknown": null,
-        // "max-empty-lines": null,
+        "max-empty-lines": 2,               // 最多允许连续两个空行
         "rule-non-nested-empty-line-before": null,
     }
 }

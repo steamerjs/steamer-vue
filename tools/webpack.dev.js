@@ -1,8 +1,8 @@
 'use strict';
 
 const path = require('path'),
-      utils = require('steamer-webpack-utils'),
-      webpack = require('webpack');
+    utils = require('steamer-webpack-utils'),
+    webpack = require('webpack');
 
 var config = require('../config/project'),
     configWebpack = config.webpack;
@@ -84,9 +84,15 @@ var devConfig = {
 
         ]
     },
+    vue: {
+        loaders: {
+            css: 'style!css!postcss',
+            less: 'style!css!postcss!less',
+        }
+    },
     postcss: function(webpack) {
         return [
-            PostcssImport(),
+            // PostcssImport(),
             Autoprefixer({
                 browsers: ['iOS 7', '> 0.1%', 'android 2.1']
             })
