@@ -176,21 +176,10 @@ utils.filterJsFile(configWebpack.entry, ["js/index"])
 
 ### 文件目录
 * 单页文件可参考 src/page/index
-* 单页应用可参考 src/page/spa
 * 开发环境一般都写在内存，如果生产文件，会放到dev文件夹下
 * 生产环境最终文件生成在dist文件夹下
 
 
-### 开发环境
-* r启动：`npm start`
-
-* 腾讯新闻主页:
-  - `localhost:9000/index.html` 
-  - `localhost:9000/news/index.html` (`webpack.server.js`里映射路径到news)
-
-* 腾讯新闻主页spa:
-  - `localhost:9000/spa.html`
-  - `localhost:9000/news/spa.html`
 
 ## 文章参考
 * [webpack使用优化（基本篇）](https://github.com/lcxfs1991/blog/issues/2)
