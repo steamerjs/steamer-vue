@@ -1,9 +1,9 @@
 'use strict';
 
 const path = require('path'),
-      utils = require('steamer-webpack-utils'),
-      os = require('os'),
-      webpack = require('webpack');
+    utils = require('steamer-webpack-utils'),
+    os = require('os'),
+    webpack = require('webpack');
 
 var config = require('../config/project'),
     configWebpack = config.webpack;
@@ -42,7 +42,7 @@ var prodConfig = {
             },
             {
                 test: /\.js$/,
-                 loader: 'happypack/loader?id=jsHappy',
+                loader: 'happypack/loader?id=jsHappy',
                 // loader: 'babel',
                 // query: {
                 //     cacheDirectory: './.webpack_cache/',
@@ -101,22 +101,28 @@ var prodConfig = {
 
         ]
     },
+    vue: {
+        loaders: {
+            css: 'style!css!postcss',
+            less: 'style!css!postcss!less',
+        }
+    },
     postcss: function(webpack) {
         return [
-            PostcssImport(),
+            // PostcssImport(),
             Autoprefixer({
                 browsers: ['iOS 7', '> 0.1%', 'android 2.1']
             })
         ]
     },
     resolve: {
-    	root: [
+        root: [
             path.resolve(configWebpack.path.src)
         ],
         moduledirectories:['node_modules', configWebpack.path.src],
         extensions: ["", ".js", ".jsx", ".es6", "css", "scss", "less", "png", "jpg", "jpeg", "ico"],
         alias: {
-        	'utils': path.join(configWebpack.path.src, '/js/common/utils'),
+            'utils': path.join(configWebpack.path.src, '/js/common/utils'),
             'sutils': 'steamer-browserutils/index',
             'net': 'steamer-net/index',
         }
@@ -131,11 +137,11 @@ var prodConfig = {
             }
         }),
         new CopyWebpackPlugin([
-		    {
-		        from: 'src/libs/',
-		        to: 'libs/[name]-' + configWebpack.hash + '.[ext]'
-		    }
-		]),
+            {
+                from: 'src/libs/',
+                to: 'libs/[name]-' + configWebpack.hash + '.[ext]'
+            }
+        ]),
         new HappyPack({
             id: 'jsHappy',
             verbose: false,
@@ -194,7 +200,7 @@ configWebpack.html.forEach(function(page, key) {
         filename: "../webserver/" + page + ".html",
         template: "src/" + page + ".html",
         favicon: "src/favicon.ico",
-        entryLog: !key ? true : false,
+        entryLog: !key,
         htmlMinify: {
             removeComments: true,
             collapseWhitespace: true,
