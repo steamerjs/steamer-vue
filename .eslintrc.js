@@ -26,6 +26,9 @@ module.exports = {
         "comma-dangle": [2, "only-multiline"],            // 只有多行的时候才允许尾部的多余逗号
         "indent": ["error", 4, { "SwitchCase": 1 }],      // 4空格缩进，Switch case有缩进
         "no-new": [0],                                    // 用vue的时候，免不了new Vue但是不赋值
+        "no-trailing-spaces": [2, {
+            "skipBlankLines": true                        // 不管空行的空格
+        }],
         "no-multi-spaces": [2, {
             "exceptions": {
                 "VariableDeclarator": true,                 // 变量声明可以有多空格，来格式化

@@ -9,6 +9,7 @@ module.exports = {
         ".stylelintrc.js",
         ".gitignore",
         ".babelrc",
+        ".editorconfig"
     ],
     options: [
         {

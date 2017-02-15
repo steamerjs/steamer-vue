@@ -31,7 +31,8 @@
     "last 5 versions"
   ],
   "dependencies": {
-    "vue": "^2.1.10"
+    "vue": "^2.1.10",
+    "core-js": "^2.4.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.4",

@@ -26,5 +26,6 @@ module.exports = {
         "media-feature-name-no-unknown": null,
         "max-empty-lines": 2,               // 最多允许连续两个空行
         "rule-non-nested-empty-line-before": null,
+        "shorthand-property-no-redundant-values": null          // 允许margin等属性的“不简写”
     }
 }
