@@ -1,12 +1,14 @@
 {
   "name": "steamer-vue",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "vue-webpack-boilerplate",
   "main": "./.steamer/steamer-vue.js",
   "scripts": {
     "start": "node ./tools/start.js",
+    "dev": "npm start",
     "dist": "node ./tools/dist.js",
-    "dev": "node ./tools/dev.js",
+    "pub": "npm run dist",
+    "dev:src": "node ./tools/dev.js",
     "test": "",
     "lint": "eslint src/ --ext .js,.vue && stylelint \"src/**/*.vue\" --syntax less"
   },
