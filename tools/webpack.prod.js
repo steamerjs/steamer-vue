@@ -75,7 +75,17 @@ var prodConfig = {
             {
                 test: /\.less$/,
                 loader: ExtractTextPlugin.extract('style', 'css?-autoprefixer&localIdentName=[name]-[local]-[hash:base64:5]!postcss!less?root=' + path.resolve('src')),
-                // include: path.resolve(configWebpack.path.src)
+                include: path.resolve(configWebpack.path.src)
+            },
+            {
+                test: /\.s(a|c)ss$/,
+                loader: ExtractTextPlugin.extract('style', 'css?-autoprefixer&localIdentName=[name]-[local]-[hash:base64:5]!postcss!sass?root=' + path.resolve('src')),
+                include: path.resolve(configWebpack.path.src)
+            },
+            {
+                test: /\.styl(us)?$/,
+                loader: ExtractTextPlugin.extract('style', 'css?-autoprefixer&localIdentName=[name]-[local]-[hash:base64:5]!postcss!stylus?root=' + path.resolve('src')),
+                include: path.resolve(configWebpack.path.src)
             },
             {
                 test: /\.html$/,
@@ -104,6 +114,10 @@ var prodConfig = {
         loaders: {
             css: 'style!css!postcss',
             less: 'style!css!postcss!less',
+            scss: 'style!css?minimize&-autoprefixer!postcss!sass?outputStyle=uncompressed',
+            sass: 'style!css?minimize&-autoprefixer!postcss!sass?outputStyle=uncompressed',
+            stylus: 'style!css!postcss!stylus',
+            styl: 'style!css!postcss!stylus',
         }
     },
     postcss: function(webpack) {

@@ -58,10 +58,28 @@ var devConfig = {
             //     include: path.resolve(configWebpack.path.src)
             // },
             {
-                test: /\.less$/,
-                loader: "happypack/loader?id=lessHappy",
+                test: /\.css$/,
+                loader: "happypack/loader?id=cssHappy",
+                include: path.resolve(configWebpack.path.src)
                 //ExtractTextPlugin.extract("style-loader", "css-loader!less-loader"),
                 // include: [path.resolve(configWebpack.path.src), 'node_modules'],
+            },
+            {
+                test: /\.less$/,
+                loader: "happypack/loader?id=lessHappy",
+                include: path.resolve(configWebpack.path.src)
+                //ExtractTextPlugin.extract("style-loader", "css-loader!less-loader"),
+                // include: [path.resolve(configWebpack.path.src), 'node_modules'],
+            },
+            {
+                test: /\.styl(us)?$/,
+                loader: "happypack/loader?id=stylusHappy",
+                include: path.resolve(configWebpack.path.src)
+            },
+            {
+                test: /\.s(a|c)ss$/,
+                loader: "happypack/loader?id=sassHappy",
+                include: path.resolve(configWebpack.path.src)
             },
             {
                 test: /\.html$/,
@@ -88,6 +106,10 @@ var devConfig = {
         loaders: {
             css: 'style!css!postcss',
             less: 'style!css!postcss!less',
+            sass: 'style!css!postcss!sass',
+            scss: 'style!css!postcss!sass',
+            stylus: 'style!css!postcss!stylus',
+            styl: 'style!css!postcss!stylus',
         }
     },
     postcss: function(webpack) {
@@ -130,9 +152,24 @@ var devConfig = {
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new HappyPack({
+            id: 'cssHappy',
+            verbose: false,
+            loaders: ['style!css?localIdentName=[name]-[local]-[hash:base64:5]!postcss?root=' + path.resolve('src')],
+        }),
+        new HappyPack({
             id: 'lessHappy',
             verbose: false,
             loaders: ['style!css?localIdentName=[name]-[local]-[hash:base64:5]!postcss!less?root=' + path.resolve('src')],
+        }),
+        new HappyPack({
+            id: 'stylusHappy',
+            verbose: false,
+            loaders: ['style!css?localIdentName=[name]-[local]-[hash:base64:5]!postcss!stylus?root=' + path.resolve('src')],
+        }),
+        new HappyPack({
+            id: 'sassHappy',
+            verbose: false,
+            loaders: ['style!css?localIdentName=[name]-[local]-[hash:base64:5]!postcss!sass?root=' + path.resolve('src')],
         }),
         new HappyPack({
             id: 'jsHappy',

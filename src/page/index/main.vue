@@ -1,26 +1,42 @@
-<style lang="less" rel="stylesheet/less">
-    p {
-        color: red;
-        font-size: 28px;
+<style lang="scss" rel="stylesheet/scss">
+    @import "css/main";
+    @import "css/main";
 
-        span {
-            color: #000;
+    .container {
+        font-size: 30px;
+
+        .steamer {
+            color: aqua;
+            span {
+                color: red;
+            }
         }
     }
 </style>
 
+<style lang="styl">
+    @import "css/main.styl";
+</style>
+
 <template>
-    <p>Hello <span>Steamer Vue</span></p>
+    <div class="container">
+        <p class="steamer">Hello <span>{{name}}</span></p>
+        <p class="scss">scss</p>
+        <p class="sass">sass</p>
+        <p class="less">less</p>
+        <p class="stylus">stylus</p>
+        <p class="css">css</p>
+    </div>
 </template>
 <script>
     export default {
         data() {
             return {
-                name: 'jeff'
+                name: 'Steamer Vue'
             }
         },
         created() {
-            console.log(333)
+            console.log('hello steamer-vue')
         }
     }
 </script>

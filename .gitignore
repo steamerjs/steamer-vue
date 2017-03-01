@@ -9,4 +9,4 @@ webpack_cache
 .happypack
 npm-debug.log
 .idea/
-yarn-error.log
+*.log
