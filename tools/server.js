@@ -25,7 +25,7 @@ app.use(webpackDevMiddleware(compiler, {
 app.use(webpackHotMiddleware(compiler, {
     // 这里和上面的client配合，可以修正 webpack_hmr 的路径为项目路径的子路径，而不是直接成为 host 子路径（从publicPath开始，而不是根开始）
     // https://github.com/glenjamin/webpack-hot-middleware/issues/24
-    path: webpackConfig.output.publicPath + '__webpack_hmr'
+    // path: webpackConfig.output.publicPath + '__webpack_hmr'
 }))
 
 // 前端转发
