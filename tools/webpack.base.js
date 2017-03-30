@@ -137,13 +137,15 @@ configWebpack.static.forEach((item) => {
     }]));
 });
 
-configWebpack.sprites = (configWebpack.spriteMode === "none") ? configWebpack.sprites : [];
+configWebpack.sprites = (configWebpack.spriteMode === "none") ? [] : configWebpack.sprites;
 
 configWebpack.sprites.forEach(function(sprites) {
     let style = configWebpack.spriteStyle,
         extMap = {
             stylus: "styl",
-            less: "less"
+            less: "less",
+            sass: "sass",
+            scss: "scss"
         },
         spriteMode = configWebpack.spriteMode,
         retinaTpl = (spriteMode === "retinaonly")? "_retinaonly" : "";

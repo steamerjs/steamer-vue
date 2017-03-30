@@ -57,7 +57,7 @@ var config = {
 
         // 支持的样式loader，css, less 或 stylus
         style: [
-            "css", "less", "stylus"
+            "css", "less", "stylus", "sass"
         ],
         // 生产环境是否提取css
         extractCss: true,
@@ -65,9 +65,9 @@ var config = {
         cssModule: false,
 
         // 合图，none (无合图), normal (仅1倍图) , retinaonly (仅2倍图), retina (包括1倍及2倍图)
-        spriteMode: "none",
-        // less, stylus
-        spriteStyle: "stylus",
+        spriteMode: "retinaonly",
+        // less, stylus, sass, scss
+        spriteStyle: "sass",
 
         // html模板
         template: [
@@ -254,6 +254,31 @@ config.custom = {
                             loader:  'stylus-loader',
                             options: {
                                 paths: [
+                                    config.webpack.path.src,
+                                    "node_modules"
+                                ]
+                            }
+                        },
+                    ]
+                }),
+            },
+            sass: {
+                test: /\.s(a|c)ss$/,
+                loader: ExtractTextPlugin.extract({
+                    fallback: 'style-loader', 
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                localIdentName: '[name]-[local]-[hash:base64:5]',
+                                // module: true
+                            }
+                        },
+                        { loader: 'postcss-loader' },
+                        { 
+                            loader:  'sass-loader',
+                            options: {
+                                includePaths: [
                                     config.webpack.path.src,
                                     "node_modules"
                                 ]
