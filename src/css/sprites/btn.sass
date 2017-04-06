@@ -123,16 +123,15 @@ $spritesheet: (340px, 340px, '~btn.png', $spritesheet-sprites, )
 //   // HTML
 //   <i class="icon icon-home"></i>
 @mixin sprite-width($sprite)
-  width: nth($sprite, 5) / 2
+  width: nth($sprite, 5)
 
 @mixin sprite-height($sprite)
-  height: nth($sprite, 6) / 2
+  height: nth($sprite, 6)
 
 @mixin sprite-position($sprite)
-  $sprite-offset-x: nth($sprite, 3) / 2
-  $sprite-offset-y: nth($sprite, 4) / 2
+  $sprite-offset-x: nth($sprite, 3)
+  $sprite-offset-y: nth($sprite, 4)
   background-position: $sprite-offset-x  $sprite-offset-y
-  background-size: nth($sprite, 7) / 2 auto
 
 @mixin sprite-image($sprite)
   $sprite-image: nth($sprite, 9)
