@@ -2,8 +2,8 @@ var express = require('express');
 var app = express();
 var webpack = require('webpack');
 var webpackDevMiddleware = require("webpack-dev-middleware");
-var webpackHotMiddleware = require("webpack-hot-middleware")
-var proxy = require('proxy-middleware');
+var webpackHotMiddleware = require("webpack-hot-middleware");
+var proxy = require('http-proxy-middleware');
 
 var webpackConfig = require("./webpack.base.js"),
 	config = require("../config/project"),

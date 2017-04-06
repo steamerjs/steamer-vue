@@ -3074,7 +3074,7 @@ http-errors@~1.6.1:
     setprototypeof "1.0.3"
     statuses ">= 1.3.1 < 2"
 
-http-proxy-middleware@~0.17.4:
+http-proxy-middleware@^0.17.4, http-proxy-middleware@~0.17.4:
   version "0.17.4"
   resolved "https://registry.yarnpkg.com/http-proxy-middleware/-/http-proxy-middleware-0.17.4.tgz#642e8848851d66f09d4f124912846dbaeb41b833"
   dependencies:
@@ -5069,10 +5069,6 @@ proxy-addr@~1.1.3:
   dependencies:
     forwarded "~0.1.0"
     ipaddr.js "1.3.0"
-
-proxy-middleware@^0.15.0:
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/proxy-middleware/-/proxy-middleware-0.15.0.tgz#a3fdf1befb730f951965872ac2f6074c61477a56"
 
 prr@~0.0.0:
   version "0.0.0"
