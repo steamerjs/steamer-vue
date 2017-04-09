@@ -1,4 +1,4 @@
-<style lang="scss" rel="stylesheet/scss">
+<style lang="less" rel="stylesheet/less">
     @import "css/main";
     @import "css/main";
 
@@ -12,10 +12,6 @@
             }
         }
     }
-</style>
-
-<style lang="styl">
-    @import "css/main.styl";
 </style>
 
 <template>

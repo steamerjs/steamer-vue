@@ -57,9 +57,9 @@ var config = {
             production: false,
         },
 
-        // 支持的样式loader，css, less 或 stylus
+        // 预编译器，默认支持css 和 less. sass, scss 和 stylus 由npm-install-webpack-plugin自动安装
         style: [
-            "css", "less", "stylus", "sass"
+            "css", "less"
         ],
         // 生产环境是否提取css
         extractCss: true,
@@ -68,12 +68,12 @@ var config = {
 
         // 合图，none (无合图), normal (仅1倍图) , retinaonly (仅2倍图), retina (包括1倍及2倍图)
         spriteMode: "retinaonly",
-        // less, stylus, sass, scss
-        spriteStyle: "sass",
+        // 默认支持less. sass, scss 和 stylus 由npm-install-webpack-plugin自动安装
+        spriteStyle: "less",
 
-        // html模板
+        // html 模板. 默认支持html 和 handlebars 和 pug 由npm-install-webpack-plugin自动安装
         template: [
-            "html", "pug", "handlebars"
+            "html"
         ],
 
         // 生产环境下资源是否压缩
@@ -184,137 +184,7 @@ config.custom = {
     // webpack module
     getModule: function() {
 
-        var module = {
-            rules: [
-                { 
-                    test: /\.js$/,
-                    loader: 'happypack/loader?id=1',
-                    exclude: /node_modules/,
-                }
-            ]
-        }; 
-
-        var styleRules = {
-            css: {
-                test: /\.css$/,
-                // 单独抽出样式文件
-                loader: ExtractTextPlugin.extract({
-                    fallback: 'style-loader', 
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                localIdentName: '[name]-[local]-[hash:base64:5]',
-                                root: config.webpack.path.src,
-                                module: config.webpack.cssModule
-                            }
-                        },
-                        { loader: 'postcss-loader' },
-                    ]
-                }),
-                include: path.resolve(config.webpack.path.src)
-            },
-            less: {
-                test: /\.less$/,
-                loader: ExtractTextPlugin.extract({
-                    fallback: 'style-loader', 
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                localIdentName: '[name]-[local]-[hash:base64:5]',
-                                module: config.webpack.cssModule
-                            }
-                        },
-                        { loader: 'postcss-loader' },
-                        {
-                            loader:  'less-loader',
-                            options: {
-                                paths: [
-                                    config.webpack.path.src,
-                                    "node_modules"
-                                ]
-                            }
-                        }
-                    ]
-                }),
-            },
-            stylus: {
-                test: /\.styl$/,
-                loader: ExtractTextPlugin.extract({
-                    fallback: 'style-loader', 
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                localIdentName: '[name]-[local]-[hash:base64:5]',
-                                // module: true
-                            }
-                        },
-                        { loader: 'postcss-loader' },
-                        { 
-                            loader:  'stylus-loader',
-                            options: {
-                                paths: [
-                                    config.webpack.path.src,
-                                    "node_modules"
-                                ]
-                            }
-                        },
-                    ]
-                }),
-            },
-            sass: {
-                test: /\.s(a|c)ss$/,
-                loader: ExtractTextPlugin.extract({
-                    fallback: 'style-loader', 
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                localIdentName: '[name]-[local]-[hash:base64:5]',
-                                // module: true
-                            }
-                        },
-                        { loader: 'postcss-loader' },
-                        { 
-                            loader:  'sass-loader',
-                            options: {
-                                includePaths: [
-                                    config.webpack.path.src,
-                                    "node_modules"
-                                ]
-                            }
-                        },
-                    ]
-                }),
-            },
-        };
-
-        var templateRules = {
-            html: {
-                test: /\.html$/,
-                loader: 'html-loader'
-            },
-            pug: {
-                test: /\.pug$/, 
-                loader: 'pug-loader'
-            },
-            handlebars: { 
-                test: /\.handlebars$/, 
-                loader: "handlebars-loader" 
-            },  
-        };
-
-        config.webpack.style.forEach((style) => {
-            let rule = styleRules[style] || '';
-            rule && module.rules.push(rule);
-        });
-
-        config.webpack.template.forEach((tpl) => {
-            let rule = templateRules[tpl] || '';
-            rule && module.rules.push(rule);
-        });
+        var module = {}; 
 
         return module;
     },
