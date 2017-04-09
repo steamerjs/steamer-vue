@@ -184,7 +184,15 @@ config.custom = {
     // webpack module
     getModule: function() {
 
-        var module = {}; 
+        var module = {
+            rules: [
+                { 
+                    test: /\.js$/,
+                    loader: 'happypack/loader?id=1',
+                    exclude: /node_modules/,
+                }
+            ]
+        }; 
 
         return module;
     },
