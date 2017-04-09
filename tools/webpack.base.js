@@ -261,27 +261,30 @@ let imageLoader = {
 
 if (isProduction) {
     // 生产环境下图片压缩
-    imageLoader.loaders.push(
-        {
-            loader: 'image-webpack-loader',
-            options: {
-                gifsicle: {
-                    interlaced: false,
-                },
-                optipng: {
-                    optimizationLevel: 7,
-                },
-                pngquant: {
-                    quality: '65-90',
-                    speed: 4
-                },
-                mozjpeg: {
-                    progressive: true,
-                    quality: 65
+    
+    if (configWebpack.imgCompress) {
+        imageLoader.loaders.push(
+            {
+                loader: 'image-webpack-loader',
+                options: {
+                    gifsicle: {
+                        interlaced: false,
+                    },
+                    optipng: {
+                        optimizationLevel: 7,
+                    },
+                    pngquant: {
+                        quality: '65-90',
+                        speed: 4
+                    },
+                    mozjpeg: {
+                        progressive: true,
+                        quality: 65
+                    }
                 }
             }
-        }
-    );
+        );
+    }
 }
 
 baseConfig.module.rules.push(imageLoader);
