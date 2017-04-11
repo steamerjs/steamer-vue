@@ -14,7 +14,7 @@ npm i
 npm start
 // 打开链接
 127.0.0.1:[端口号]/[config.route路径]/[html入口]
-例如： 127.0.0.1:9000/steamer-vue/index.html
+例如： 127.0.0.1:9000/index.html
 
 // 代码规范安装
 npm i -g eslint
