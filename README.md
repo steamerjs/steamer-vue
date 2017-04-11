@@ -28,18 +28,6 @@ npm run dist
 ```
 
 
-## 基本配置
-
-打开 config/project.js进行以下基本配置:
-
-```javascript
-* `config.webserver`  html的链接
-* `config.cdn`  cdn的链接
-* `config.port`  开发环境服务器端口
-* `config.route` 开发环境访问的路径
-```
-
-
 ## 详细文档
 * [Basic Configuration 基本配置](https://github.com/SteamerTeam/steamer-vue/wiki/Basic-Configuration-%08%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE)
 * [Folder Structure 目录结构](https://github.com/SteamerTeam/steamer-vue/wiki/Folder-Structure-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84)
