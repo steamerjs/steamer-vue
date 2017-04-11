@@ -29,10 +29,10 @@
         data() {
             return {
                 name: 'Steamer Vue'
-            }
+            };
         },
         created() {
-            console.log('hello steamer-vue')
+            console.log('hello steamer-vue');
         }
-    }
+    };
 </script>

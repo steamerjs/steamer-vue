@@ -21,6 +21,7 @@ module.exports = {
         // "react",
     ],
     rules: {
+        "semi": [2, "always"],
         "no-multiple-empty-lines": [2, { "max": 2 }],     // 最多两行空行，少了不够，多了没用
         "space-before-function-paren": [0, "always"],     // 不关心函数括号前是否有空格
         "comma-dangle": [2, "only-multiline"],            // 只有多行的时候才允许尾部的多余逗号
