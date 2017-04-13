@@ -186,7 +186,8 @@ var styleRules = {
                     // options: {
                     //     includePaths: [
                     //         config.webpack.path.src,
-                    //         "node_modules"
+                    //         "node_modules",
+                    //         path.join(configWebpack.path.src, "css/sprites")
                     //     ]
                     // }
                 },

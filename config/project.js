@@ -61,7 +61,7 @@ var config = {
 
         // 预编译器，默认支持css 和 less. sass, scss 和 stylus 由npm-install-webpack-plugin自动安装
         style: [
-            "css", "less", "stylus"
+            "css", "less", "stylus", "sass"
         ],
         // 生产环境是否提取css
         extractCss: true,
@@ -69,7 +69,7 @@ var config = {
         cssModule: false,
 
         // 合图，none (无合图), normal (仅1倍图) , retinaonly (仅2倍图), retina (包括1倍及2倍图)
-        spriteMode: "retinaonly",
+        spriteMode: "normal",
         // 默认支持less. sass, scss 和 stylus 由npm-install-webpack-plugin自动安装
         spriteStyle: "less",
 

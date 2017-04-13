@@ -1,6 +1,9 @@
+@import "~btn.scss";
+
 .container {
 
     .scss {
         color: lightseagreen;
+        @include sprite($apple);
     }
 }
