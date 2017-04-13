@@ -1,6 +1,5 @@
 <style lang="less" rel="stylesheet/less">
-    @import "css/main";
-    @import "css/main";
+    @import "./css/main.less";
 
     .container {
         font-size: 30px;

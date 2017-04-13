@@ -1,6 +1,5 @@
-import Vue from 'vue'
-import Main from './main.vue'
-import './css/main.less'
+import Vue from 'vue';
+import Main from './main.vue';
 
 new Vue({
     el: '#main',
