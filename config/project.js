@@ -45,6 +45,8 @@ var config = {
         // 开发服务器配置
         webserver: steamerConfig.webserver,
         cdn: steamerConfig.cdn,
+        cssCdn: steamerConfig.cssCdn,
+        imgCdn: steamerConfig.imgCdn,
         port: steamerConfig.port,    // port for local server
         route: steamerConfig.route, // http://host/news/
 
@@ -258,6 +260,7 @@ config.custom = {
                 favicon: "src/favicon.ico",
                 htmlMinify: null,
                 entryLog: !key ? true : false,
+                cssPublicPath: isProduction ? config.webpack.cssCdn : config.webpack.webserver,
                 templateContent: function(tpl) {
                     return tpl;
                 }
