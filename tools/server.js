@@ -7,7 +7,9 @@ var proxy = require('proxy-middleware');
 
 var webpackConfig = require("./webpack.base.js"),
 	config = require("../config/project"),
-	configWebpack = config.webpack;
+	configWebpack = config.webpack,
+	port = configWebpack.port,
+	route = Array.isArray(configWebpack.route) ? [configWebpack.route] : configWebpack.route;
 
 for (var key in webpackConfig.entry) {
     webpackConfig.entry[key].unshift('webpack-hot-middleware/client?reload=true&dynamicPublicPath=true&path=__webpack_hmr')
@@ -17,6 +19,7 @@ var compiler = webpack(webpackConfig);
 app.use(webpackDevMiddleware(compiler, {
     hot: true,
 	historyApiFallback: true,
+	noInfo: true,
 	stats: {
 		colors: true
 	},
@@ -29,7 +32,7 @@ app.use(webpackHotMiddleware(compiler, {
 }))
 
 // 前端转发
-app.use(configWebpack.route, proxy('http://localhost:' + configWebpack.port));
+app.use(route, proxy('http://localhost:' + port));
 // 后台转发
 app.use('/api/', proxy('http://localhost:3001'));
 
