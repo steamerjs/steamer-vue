@@ -4,7 +4,10 @@
 [![NPM Version](https://img.shields.io/npm/v/steamer-vue.svg?style=flat)](https://www.npmjs.com/package/steamer-vue)
 [![Deps](https://david-dm.org/SteamerTeam/steamer-vue.svg)](https://david-dm.org/SteamerTeam/steamer-vue)
 
-## 使用
+## 如何使用
+
+* 推荐 >> 使用[steamerjs](https://steamerjs.github.io/steamerjs/docs/Steamer.html)安装
+* 直接从github clone 下来
 
 ```javascript
 // 安装依赖
@@ -29,7 +32,7 @@ npm run dist
 
 
 ## 如何开始
-[详情文档](https://steamerjs.github.io/steamerjs/docs/How-To-Start.html)
+[参见文档-项目脚手架](https://steamerjs.github.io/steamerjs/docs/Starterkit.html)
 
 
 ## 文章参考
