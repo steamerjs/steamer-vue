@@ -6,7 +6,7 @@
 
 ## 如何使用
 
-* 推荐 >> 使用[steamerjs](https://steamerjs.github.io/steamerjs/docs/Steamer.html)安装
+* 推荐 >> 使用[steamerjs](https://steamerjs.github.io/steamerjs/docs/How-To-Start.html)安装
 * 直接从github clone 下来
 
 ```javascript
