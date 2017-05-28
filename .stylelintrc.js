@@ -17,6 +17,7 @@ module.exports = {
                 "inside-single-line-block",
             ],
         }],
+        "no-debugger": [0],                                 // 调试需要有debugger
         "rule-nested-empty-line-before": null,
         // "no-missing-end-of-source-newline": null,
         "no-eol-whitespace": [true, {
