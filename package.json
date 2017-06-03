@@ -34,7 +34,9 @@
   "browserslist": [
     "last 8 versions"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "alloy-normalize.css": "^0.1.0"
+  },
   "devDependencies": {
     "autoprefixer": "^7.1.1",
     "babel-core": "^6.24.1",
