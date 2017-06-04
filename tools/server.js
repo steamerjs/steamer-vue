@@ -3,13 +3,13 @@ var app = express();
 var webpack = require('webpack');
 var webpackDevMiddleware = require("webpack-dev-middleware");
 var webpackHotMiddleware = require("webpack-hot-middleware");
-var proxy = require('proxy-middleware');
+var proxy = require('http-proxy-middleware');
 
 var webpackConfig = require("./webpack.base.js"),
 	config = require("../config/project"),
 	configWebpack = config.webpack,
 	port = configWebpack.port,
-	route = Array.isArray(configWebpack.route) ? [configWebpack.route] : configWebpack.route;
+	route = Array.isArray(configWebpack.route) ? configWebpack.route : [configWebpack.route];
 
 for (var key in webpackConfig.entry) {
     webpackConfig.entry[key].unshift('webpack-hot-middleware/client?reload=true&dynamicPublicPath=true&path=__webpack_hmr')
@@ -31,16 +31,16 @@ app.use(webpackHotMiddleware(compiler, {
     // path: webpackConfig.output.publicPath + '__webpack_hmr'
 }))
 
-// 前端转发
-app.use(route, proxy('http://localhost:' + port));
-// 后台转发
-app.use('/api/', proxy('http://localhost:3001'));
+// 转发
+route.forEach((rt) => {
+	app.use(rt, proxy({target: `http://127.0.0.1:${port}`, pathRewrite: {[`^${rt}`] : '/'}}));
+});
 
-app.listen(configWebpack.port, function(err) {
+app.listen(port, function(err) {
 	if (err) {
 		console.error(err);
 	}
 	else {
-		console.info("Listening on port %s. Open up http://localhost:%s/ in your browser.", configWebpack.port, configWebpack.port);
+		console.info("Listening on port %s. Open up http://localhost:%s/ in your browser.", port, port);
 	}
 });
