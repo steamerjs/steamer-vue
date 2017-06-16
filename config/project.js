@@ -81,7 +81,7 @@ var config = {
         // 生产环境下资源是否压缩
         compress: true,
         // 非windows系统生产环境下图片是否压缩
-        imgCompress: true,
+        imgCompress: false,
 
         // 不经webpack打包的资源
         static: [
