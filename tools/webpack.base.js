@@ -19,7 +19,6 @@ var Clean = require('clean-webpack-plugin'),
     SpritesmithPlugin = require('webpack-spritesmith'),
     WebpackMd5Hash = require('webpack-md5-hash'),
     UglifyJsParallelPlugin = require('webpack-uglify-parallel'),
-    StylelintWebpackPlugin = require('stylelint-webpack-plugin'),
     ExtractTextPlugin = require("extract-text-webpack-plugin"),
     NpmInstallPlugin  = require('npm-install-webpack-plugin-steamer');
 
@@ -34,12 +33,6 @@ var baseConfig = {
     },
     module: {
         rules: [
-            {
-                test: /\.(js|vue)$/,
-                loader: 'eslint-loader',
-                enforce: "pre",
-                include: configWebpack.path.src
-            },
             { 
                 test: /\.js$/,
                 loader: 'babel-loader',
@@ -72,14 +65,6 @@ var baseConfig = {
     },
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
-        new StylelintWebpackPlugin({
-            configFile: 'stylelintrc.js',
-            context: 'inherits from webpack',
-            files: '../src/**/*.@(?(s)?(a|c)ss|vue|html)',
-            failOnError: false,
-            lintDirtyModulesOnly: true,                 // 只在改变的时候lint，其他时候跳过
-            extractStyleTagsFromHtml: true,
-        }),
         new NpmInstallPlugin({
             // Use --save or --save-dev
             dev: true,
