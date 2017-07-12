@@ -28,6 +28,9 @@ var config = {
     // ========================= webpack环境配置 =========================
     env: __env,
 
+    // 默认使用的npm命令行
+    npm: 'npm',
+
     webpack: {
 
         // ========================= webpack路径与url =========================
@@ -59,9 +62,12 @@ var config = {
             production: false,
         },
 
+        // javascript 方言，目前仅支持 ts(typescript)
+        js: [],
+
         // 预编译器，默认支持css 和 less. sass, scss 和 stylus 由npm-install-webpack-plugin自动安装
         style: [
-            "css", "less", "stylus", "sass", "scss", "styl"
+            "css", "less",
         ],
         // 生产环境是否提取css
         extractCss: true,
@@ -80,8 +86,6 @@ var config = {
 
         // 生产环境下资源是否压缩
         compress: true,
-        // 非windows系统生产环境下图片是否压缩
-        imgCompress: false,
 
         // 不经webpack打包的资源
         static: [
@@ -101,7 +105,7 @@ var config = {
         // webpack resolve.alias 包别名
         alias: {
             'utils': path.join(srcPath, '/js/common/utils'),
-            'sutils': 'steamer-browserutils/index',
+            'sutils': 'steamer-browserutils/simple',
         },
 
         // 文件名与哈希, hash, chunkhash, contenthash 与webpack的哈希配置对应
@@ -114,16 +118,16 @@ var config = {
 
         // ========================= webpack entry配置 =========================
         // 根据约定，自动扫描js entry，约定是src/page/xxx/main.js 或 src/page/xxx/main.jsx
-        /** 
+        /**
             获取结果示例
             {
-                'js/index': [path.join(configWebpack.path.src, "/page/index/main.js")],
+                'js/simple': [path.join(configWebpack.path.src, "/page/simple/main.js")],
                 'js/spa': [path.join(configWebpack.path.src, "/page/spa/main.js")],
                 'js/pindex': [path.join(configWebpack.path.src, "/page/pindex/main.jsx")],
             }
          */
         entry: utils.filterJsFileByCmd(utils.getJsEntry({
-            srcPath: path.join(srcPath, "page"), 
+            srcPath: path.join(srcPath, "page"),
             fileName: "main",
             extensions: ["js", "jsx"],
             keyPrefix: "js/",
@@ -133,19 +137,19 @@ var config = {
         // 自动扫描html，配合html-res-webpack-plugin
         /**
             获取结果示例
-            [ 
-                { 
-                    key: 'index',
-                    path: 'path/src/page/index/index.html'
+            [
+                {
+                    key: 'simple',
+                    path: 'path/src/page/simple/simple.html'
                 },
-                { 
+                {
                     key: 'spa',
-                    path: 'path/src/page/spa/index.html'
+                    path: 'path/src/page/spa/simple.html'
                 },
-                { 
+                {
                     key: 'pindex',
-                    path: 'path/src/page/pindex/index.html'
-                } 
+                    path: 'path/src/page/pindex/simple.html'
+                }
             ]
          */
         html: utils.filterHtmlFileByCmd(utils.getHtmlEntry({
@@ -157,14 +161,14 @@ var config = {
         /**
             获取结果示例
             [
-                { 
+                {
                     key: 'btn',
                     path: 'path/src/img/sprites/btn'
                 },
-                { 
+                {
                     key: 'list',
                     path: 'path/src/img/sprites/list'
-                } 
+                }
             ]
          */
         sprites: utils.getSpriteEntry({
@@ -190,22 +194,22 @@ config.custom = {
 
         var module = {
             rules: [
-                
+
             ]
-        }; 
+        };
 
         var jsRule = null;
 
         if (isProduction) {
             // js 使用了 happypack 进行编译，具体 babel 配置参看 happypack 插件的配置
-            jsRule = { 
+            jsRule = {
                 test: /\.js$/,
                 loader: 'happypack/loader?id=1',
                 exclude: /node_modules/,
             };
         }
         else {
-            jsRule = { 
+            jsRule = {
                 test: /\.js$/,
                 use: [
                     {
@@ -260,7 +264,7 @@ config.custom = {
                 }],
             }));
         }
-        
+
         config.webpack.html.forEach(function(page, key) {
             plugins.push(new HtmlResWebpackPlugin({
                 mode: "html",
@@ -274,16 +278,23 @@ config.custom = {
                     return tpl;
                 }
             }));
-        }); 
+        });
 
         return plugins;
     },
-        
+
     // webpack externals
     getExternals: function() {
-        return {
-            '$': "zepto",
-        };
+        if (isProduction) {
+            return {
+                '$': 'zepto',
+                'vue': 'Vue',
+            };
+        } else {
+            return {
+
+            };
+        }
     },
 
     // 其它 webpack 配置

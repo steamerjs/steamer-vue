@@ -19,8 +19,7 @@ var Clean = require('clean-webpack-plugin'),
     SpritesmithPlugin = require('webpack-spritesmith'),
     WebpackMd5Hash = require('webpack-md5-hash'),
     UglifyJsParallelPlugin = require('webpack-uglify-parallel'),
-    ExtractTextPlugin = require("extract-text-webpack-plugin"),
-    NpmInstallPlugin  = require('npm-install-webpack-plugin-steamer');
+    ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var baseConfig = {
     context: configWebpack.path.src,
@@ -33,7 +32,7 @@ var baseConfig = {
     },
     module: {
         rules: [
-            { 
+            {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 options: {
@@ -65,14 +64,6 @@ var baseConfig = {
     },
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
-        new NpmInstallPlugin({
-            // Use --save or --save-dev
-            dev: true,
-            // Install missing peerDependencies
-            peerDependencies: true,
-            // Reduce amount of console logging
-            quiet: false,
-        })
     ],
     watch: isProduction ? false : true,
     devtool: isProduction ? configWebpack.sourceMap.production : configWebpack.sourceMap.development
@@ -96,8 +87,8 @@ var commonLoaders = [
             autoprefixer: true,
         }
     },
-    { 
-        loader: 'postcss-loader' 
+    {
+        loader: 'postcss-loader'
     }
 ];
 
@@ -106,7 +97,7 @@ var styleRules = {
         test: /\.css$/,
         // 单独抽出样式文件
         loader: ExtractTextPlugin.extract({
-            fallback: 'style-loader', 
+            fallback: 'style-loader',
             use: commonLoaders
         }),
         include: path.resolve(config.webpack.path.src)
@@ -114,7 +105,7 @@ var styleRules = {
     less: {
         test: /\.less$/,
         loader: ExtractTextPlugin.extract({
-            fallback: 'style-loader', 
+            fallback: 'style-loader',
             use: merge([], commonLoaders).concat([{
                 loader: 'less-loader',
             }])
@@ -132,7 +123,7 @@ var styleRules = {
     sass: {
         test: /\.s(a|c)ss$/,
         loader: ExtractTextPlugin.extract({
-            fallback: 'style-loader', 
+            fallback: 'style-loader',
             use: merge([], commonLoaders).concat([{
                 loader: 'sass-loader',
             }])
@@ -147,18 +138,18 @@ var templateRules = {
         loader: 'html-loader'
     },
     pug: {
-        test: /\.pug$/, 
+        test: /\.pug$/,
         loader: 'pug-loader'
     },
-    handlebars: { 
-        test: /\.handlebars$/, 
-        loader: "handlebars-loader" 
-    },  
+    handlebars: {
+        test: /\.handlebars$/,
+        loader: "handlebars-loader"
+    },
     ejs: {
         test: /\.ejs$/,
         loader: "ejs-compiled-loader",
         query: {
-            'htmlmin': true, // or enable here  
+            'htmlmin': true, // or enable here
             'htmlminOptions': {
                 removeComments: true
             }
@@ -183,6 +174,14 @@ var vueStyleLoaderMap = {
     scss: 'vue-style-loader!css-loader!postcss-loader!sass-loader',
     stylus: 'vue-style-loader!css-loader!postcss-loader!stylus-loader',
     styl: 'vue-style-loader!css-loader!postcss-loader!stylus-loader',
+}
+
+// js方言
+var jsRules = {
+    ts: {
+        test: /\.(tsx|ts)$/,
+        loader: 'awesome-typescript-loader'
+    }
 };
 
 configWebpack.style.forEach((style) => {
@@ -201,6 +200,12 @@ configWebpack.template.forEach((tpl) => {
     rule && baseConfig.module.rules.push(rule);
 });
 
+configWebpack.js.forEach((tpl) => {
+    let rule = jsRules[tpl] || '';
+
+    rule && baseConfig.module.rules.push(rule);
+});
+
 let imageLoader = {
     test: /\.(jpe?g|png|gif|svg)$/i,
     loaders: [
@@ -215,34 +220,6 @@ let imageLoader = {
     ]
 };
 
-if (isProduction && !isWindows) {
-    // 生产环境下图片压缩
-    
-    if (configWebpack.imgCompress) {
-        imageLoader.loaders.push(
-            {
-                loader: 'image-webpack-loader',
-                options: {
-                    gifsicle: {
-                        interlaced: false,
-                    },
-                    optipng: {
-                        optimizationLevel: 7,
-                    },
-                    pngquant: {
-                        quality: '65-90',
-                        speed: 4
-                    },
-                    mozjpeg: {
-                        progressive: true,
-                        quality: 65
-                    }
-                }
-            }
-        );
-    }
-}
-
 baseConfig.module.rules.push(imageLoader);
 
 /************* plugins 处理 *************/
@@ -252,8 +229,8 @@ if (isProduction) {
 
     if (configWebpack.compress) {
         baseConfig.plugins.push(new UglifyJsParallelPlugin({
-            workers: os.cpus().length, // usually having as many workers as cpu cores gives good results 
-            // other uglify options 
+            workers: os.cpus().length, // usually having as many workers as cpu cores gives good results
+            // other uglify options
             compress: {
                 warnings: false,
             },
