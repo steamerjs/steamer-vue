@@ -97,7 +97,7 @@ var styleRules = {
         test: /\.css$/,
         // 单独抽出样式文件
         loader: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
+            fallback: 'vue-style-loader',
             use: commonLoaders
         }),
         include: path.resolve(config.webpack.path.src)
@@ -105,7 +105,7 @@ var styleRules = {
     less: {
         test: /\.less$/,
         loader: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
+            fallback: 'vue-style-loader',
             use: merge([], commonLoaders).concat([{
                 loader: 'less-loader',
             }])
@@ -114,7 +114,7 @@ var styleRules = {
     stylus: {
         test: /\.styl$/,
         loader: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
+            fallback: 'vue-style-loader',
             use: merge([], commonLoaders).concat([{
                 loader: 'stylus-loader',
             }])
@@ -123,7 +123,7 @@ var styleRules = {
     sass: {
         test: /\.s(a|c)ss$/,
         loader: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
+            fallback: 'vue-style-loader',
             use: merge([], commonLoaders).concat([{
                 loader: 'sass-loader',
             }])
@@ -168,13 +168,54 @@ var vueLoader = {
 };
 
 var vueStyleLoaderMap = {
-    css: 'vue-style-loader!css-loader!postcss-loader',
-    less: 'vue-style-loader!css-loader!postcss-loader!less-loader',
-    sass: 'vue-style-loader!css-loader!postcss-loader!sass-loader',
-    scss: 'vue-style-loader!css-loader!postcss-loader!sass-loader',
-    stylus: 'vue-style-loader!css-loader!postcss-loader!stylus-loader',
-    styl: 'vue-style-loader!css-loader!postcss-loader!stylus-loader',
-}
+    css: ExtractTextPlugin.extract({
+        use: [
+            'css-loader',
+            'postcss-loader',
+        ],
+        fallback: 'vue-style-loader'
+    }),
+    less: ExtractTextPlugin.extract({
+        use: [
+            'css-loader',
+            'postcss-loader',
+            'less-loader',
+        ],
+        fallback: 'vue-style-loader'
+    }),
+    sass: ExtractTextPlugin.extract({
+        use: [
+            'css-loader',
+            'postcss-loader',
+            'sass-loader',
+        ],
+        fallback: 'vue-style-loader'
+    }),
+    scss: ExtractTextPlugin.extract({
+        use: [
+            'css-loader',
+            'postcss-loader',
+            'sass-loader',
+        ],
+        fallback: 'vue-style-loader'
+    }),
+    stylus: ExtractTextPlugin.extract({
+        use: [
+            'css-loader',
+            'postcss-loader',
+            'stylus-loader',
+        ],
+        fallback: 'vue-style-loader'
+    }),
+    styl: ExtractTextPlugin.extract({
+        use: [
+            'css-loader',
+            'postcss-loader',
+            'stylus-loader',
+        ],
+        fallback: 'vue-style-loader'
+    }),
+};
 
 // js方言
 var jsRules = {
