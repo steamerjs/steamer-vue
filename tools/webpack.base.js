@@ -211,7 +211,7 @@ let imageLoader = {
     loaders: [
         {
             loader: "url-loader",
-            query: {
+            options: {
                 publicPath: isProduction ? configWebpack.imgCdn : configWebpack.webserver,
                 limit: 1000,
                 name: "img/[path]/" + configWebpack.hashName + ".[ext]"
