@@ -1,7 +1,7 @@
 {
   "name": "steamer-vue",
-  "version": "3.0.0-beta.3",
-  "description": "vue-webpack-boilerplate",
+  "version": "3.0.0-beta.4",
+  "description": "alloyteam vue starterkit",
   "main": "./.steamer/steamer-vue.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development node ./tools/script.js",
@@ -45,7 +45,7 @@
     "babel-preset-stage-3": "^6.24.1",
     "browserslist": "^2.2.2",
     "cache-loader": "^1.0.3",
-    "caniuse-db": "^1.0.30000704",
+    "caniuse-db": "^1.0.30000706",
     "clean-webpack-plugin": "^0.1.16",
     "copy-webpack-plugin-hash": "^4.0.5",
     "core-js": "^2.4.1",
@@ -78,7 +78,7 @@
     "vue": "^2.4.2",
     "vue-loader": "^13.0.1",
     "vue-template-compiler": "^2.4.2",
-    "webpack": "^3.3.0",
+    "webpack": "^3.4.1",
     "webpack-dev-middleware": "^1.11.0",
     "webpack-hot-middleware": "^2.18.2",
     "webpack-md5-hash": "^0.0.5",
