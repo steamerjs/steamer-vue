@@ -6,7 +6,7 @@
 
 ## 快速启动
 
-* 推荐 >> 使用[steamerjs](https://steamerjs.github.io/steamerjs/docs/How-To-Start.html)安装
+* 推荐 >> 使用[steamerjs](https://steamerjs.github.io/docs/How-To-Start.html)安装
 * 直接从github clone 下来
 
 ```javascript
@@ -14,10 +14,9 @@
 npm i
 
 // 开发
-npm start
+npm start 或 npm run dev
 // 打开链接
-127.0.0.1:[端口号]/[config.route路径]/[html入口]
-例如： 127.0.0.1:9000/index.html
+localhost:9000
 
 // 代码规范安装
 npm i -g eslint
@@ -26,13 +25,13 @@ npm i -g stylelint
 npm lint
 
 // 生产代码生成
-npm run dist
+npm run dist 或 npm run pub
 
 ```
 
 
 ## 如何开始
-[参见文档-项目脚手架](https://steamerjs.github.io/steamerjs/docs/Starterkit.html)
+[参见文档-项目脚手架](https://steamerjs.github.io/docs/Starterkit.html)
 
 
 ## 文章参考
