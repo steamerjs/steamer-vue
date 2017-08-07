@@ -48,7 +48,7 @@
     "cache-loader": "^1.0.3",
     "caniuse-db": "^1.0.30000709",
     "clean-webpack-plugin": "^0.1.16",
-    "copy-webpack-plugin-hash": "^4.0.5",
+    "copy-webpack-plugin-hash": "^5.0.0",
     "core-js": "^2.4.1",
     "cross-env": "^5.0.1",
     "css-loader": "^0.28.4",
