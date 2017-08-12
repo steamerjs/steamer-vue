@@ -13,7 +13,7 @@ npm i steamerjs steamer-plugin-kit
 
 steamer kit
 
-// 根据列出来的选项，选择 simple 脚手架
+// 根据列出来的选项，选择 vue 脚手架
 ```
 
 * 直接从github clone 下来
