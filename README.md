@@ -18,6 +18,8 @@ steamer kit
 
 * 直接从github clone 下来
 
+## 常用命令
+
 ```javascript
 // 安装依赖
 npm i
