@@ -39,7 +39,7 @@ var config = {
             dist: distPath,
             sprite: spritePath,
             distCdn: 'cdn', // 生成cdn的目录，dist/cdn
-            distWebserver: 'webserver' // 生成webserver的目录, dist/webserver， 目录相对于 distCdn
+            distWebserver: 'webserver' // 生成webserver的目录, dist/webserver
         },
 
         // ========================= webpack服务器及路由配置 =========================
