@@ -33,7 +33,7 @@ var baseConfig = {
         ],
         extensions: [
             '.ts', '.tsx', '.js', '.jsx', '.css', '.scss', 'sass', '.less', '.styl', 
-            '.png', '.jpg', '.jpeg', '.ico', '.ejs', '.pug', '.handlebars', 'swf'
+            '.png', '.jpg', '.jpeg', '.ico', '.ejs', '.pug', '.handlebars', '.swf', '.vue'
         ],
         alias: {}
     },
