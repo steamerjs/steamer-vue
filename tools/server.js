@@ -1,9 +1,11 @@
-var express = require('express');
-var app = express();
-var webpack = require('webpack');
-var webpackDevMiddleware = require("webpack-dev-middleware");
-var webpackHotMiddleware = require("webpack-hot-middleware");
-var proxy = require('http-proxy-middleware');
+const url = require('url');
+	  express = require('express'),
+	  app = express(),
+	  webpack = require('webpack'),
+	  webpackDevMiddleware = require("webpack-dev-middleware"),
+	  webpackHotMiddleware = require("webpack-hot-middleware"),
+	  proxy = require('http-proxy-middleware');
+
 
 var webpackConfig = require("./webpack.base.js"),
 	config = require("../config/project"),
@@ -13,8 +15,18 @@ var webpackConfig = require("./webpack.base.js"),
 	apiPort = configWebpack['api-port'],
 	apiRoute = configWebpack['api-route'];
 
+function addProtocal(urlString) {
+	if (!!~urlString.indexOf('http:') || !!~urlString.indexOf('https:')) {
+		return urlString;
+	}
+
+	return 'http:' + urlString;
+}
+
+var urlObject = url.parse(addProtocal(configWebpack.webserver));
+
 for (var key in webpackConfig.entry) {
-    webpackConfig.entry[key].unshift('webpack-hot-middleware/client?reload=true&dynamicPublicPath=true&path=__webpack_hmr')
+    webpackConfig.entry[key].unshift(`webpack-hot-middleware/client?reload=true&dynamicPublicPath=true&path=__webpack_hmr`)
 }
 
 var compiler = webpack(webpackConfig);
@@ -29,7 +41,7 @@ app.use(webpackDevMiddleware(compiler, {
 app.use(webpackHotMiddleware(compiler, {
     // 这里和上面的client配合，可以修正 webpack_hmr 的路径为项目路径的子路径，而不是直接成为 host 子路径（从publicPath开始，而不是根开始）
     // https://github.com/glenjamin/webpack-hot-middleware/issues/24
-    // path: webpackConfig.output.publicPath + '__webpack_hmr'
+    path: `${urlObject.path}__webpack_hmr`
 }))
 
 // 静态资源转发

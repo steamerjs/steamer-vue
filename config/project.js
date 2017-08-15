@@ -63,7 +63,9 @@ var config = {
 
         // 是否清理生成文件夹
         clean: true,
-        // sourcemap
+
+        // sourcemap, 请写具体的sourcemap名称，而不是写true
+        // 参考文章： https://segmentfault.com/a/1190000004280859
         sourceMap: {
             development: false,
             production: false,
