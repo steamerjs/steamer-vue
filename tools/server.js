@@ -6,7 +6,6 @@ const url = require('url');
 	  webpackHotMiddleware = require("webpack-hot-middleware"),
 	  proxy = require('http-proxy-middleware');
 
-
 var webpackConfig = require("./webpack.base.js"),
 	config = require("../config/project"),
 	configWebpack = config.webpack,
@@ -26,7 +25,7 @@ function addProtocal(urlString) {
 var urlObject = url.parse(addProtocal(configWebpack.webserver));
 
 for (var key in webpackConfig.entry) {
-    webpackConfig.entry[key].unshift(`webpack-hot-middleware/client?reload=true&dynamicPublicPath=true&path=__webpack_hmr`)
+    webpackConfig.entry[key].unshift(`webpack-hot-middleware/client?reload=true&dynamicPublicPath=true&path=__webpack_hmr`);
 }
 
 var compiler = webpack(webpackConfig);
@@ -42,7 +41,7 @@ app.use(webpackHotMiddleware(compiler, {
     // 这里和上面的client配合，可以修正 webpack_hmr 的路径为项目路径的子路径，而不是直接成为 host 子路径（从publicPath开始，而不是根开始）
     // https://github.com/glenjamin/webpack-hot-middleware/issues/24
     path: `${urlObject.path}__webpack_hmr`
-}))
+}));
 
 // 静态资源转发
 route.forEach((rt) => {
