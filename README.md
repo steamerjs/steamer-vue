@@ -6,14 +6,15 @@
 
 ## 快速启动
 
-* 推荐 >> 使用[steamerjs](https://steamerjs.github.io/docs/How-To-Start.html)安装
+* 推荐 >> 使用[steamerjs](https://steamerjs.github.io/docs/projectkits/Bootstrap.html)安装
 
 ```javascript
-npm i steamerjs steamer-plugin-kit
+
+npm i -g steamerjs steamer-plugin-kit
+
+npm i -g steamer-vue
 
 steamer kit
-
-// 根据列出来的选项，选择 vue 脚手架
 ```
 
 * 直接从github clone 下来
