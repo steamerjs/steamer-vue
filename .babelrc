@@ -1,6 +1,7 @@
 {
     "plugins": [
-    	"transform-runtime"
+        "transform-runtime",
+        "transform-vue-jsx"
     ],
     "presets": [
         ["es2015", {"loose": true, "modules": false}],

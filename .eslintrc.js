@@ -1,12 +1,10 @@
 module.exports = {
-    "env": {},
     "extends": [
-        "@alloyteam/eslint-config-vue",
+      "eslint-config-alloy/vue"
     ],
-    "plugins": [],
-    "rules": {
-        
-    },
+    "plugins": [
+      "vue"
+    ],
     "globals": {
         
     }
