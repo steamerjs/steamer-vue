@@ -4,6 +4,7 @@
 
     .scss {
         color: lightseagreen;
+        
         @include sprite($apple);
     }
 }
