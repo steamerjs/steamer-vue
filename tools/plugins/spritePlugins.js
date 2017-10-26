@@ -49,7 +49,8 @@ module.exports = function(config, webpack) {
             }
         };
 
-        let templatePath = require.resolve('spritesheet-templates-steamer/lib/templates/' + style + retinaTpl + '.template.handlebars'); // path.join(__dirname, '../../node_modules/', './spritesheet-templates-steamer/lib/templates/' + style + retinaTpl + '.template.handlebars');
+        let templatePath = require.resolve('spritesheet-templates-steamer/lib/templates/' + style + retinaTpl + '.template.handlebars');
+        // path.join(__dirname, '../../node_modules/', './spritesheet-templates-steamer/lib/templates/' + style + retinaTpl + '.template.handlebars');
         console.log(templatePath);
         spritesConfig.customTemplates = {
             [`${sprites.key}${retinaTpl}`]: templatePath
