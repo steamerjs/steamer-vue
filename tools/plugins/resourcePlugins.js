@@ -31,7 +31,7 @@ module.exports = function(config, webpack) {
                 return getPath('css/' + config.webpack.contenthashName + '.css').replace('css/js', 'css');
             },
             allChunks: true,
-            disable: !((isProduction || !config.webpack.extractCss))
+            disable: !((isProduction || config.webpack.extractCss))
         }),
 
     ];
