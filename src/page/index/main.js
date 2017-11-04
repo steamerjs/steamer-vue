@@ -5,5 +5,3 @@ new Vue({
     el: '#main',
     render: h => h(Main)
 });
-
-let a = '1';

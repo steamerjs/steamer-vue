@@ -1,5 +1,3 @@
-`use strict`;
-
 module.exports = function(config) {
 
     let configWebpack = config.webpack;
@@ -22,7 +20,7 @@ module.exports = function(config) {
             test: /\.ejs$/,
             loader: 'ejs-compiled-loader',
             query: {
-                'htmlmin': true, // or enable here  
+                'htmlmin': true, // or enable here
                 'htmlminOptions': {
                     removeComments: true
                 }

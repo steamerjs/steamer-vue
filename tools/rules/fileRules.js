@@ -1,5 +1,3 @@
-`use strict`;
-
 module.exports = function(config) {
 
     let configWebpack = config.webpack,

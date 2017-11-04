@@ -1,15 +1,9 @@
 <style lang="less" rel="stylesheet/less">
     @import "./css/main.less";
 
-    .container {
-        font-size: 30px;
-
-        .steamer {
-            color: aqua;
-            span {
-                color: red;
-            }
-        }
+    div {
+        margin: 0 auto;
+        text-align: center;
     }
 </style>
 
@@ -17,7 +11,7 @@
 export default {
     data() {
         return {
-            name: 'Steamer Vue'
+            name: ' world'
         };
     },
     created() {
@@ -26,15 +20,7 @@ export default {
     render() {
         return (
             <div class="container">
-                <p class="steamer">
-                        Hello
-                    <span>{this.name}</span>
-                </p>
-                <p class="scss">scss</p>
-                <p class="sass">sass</p>
-                <p class="less">less</p>
-                <p class="stylus">stylus</p>
-                <p class="css">css</p>
+                Hello {this.name}!
             </div>
         );
     }

@@ -1,7 +1,4 @@
-`use strict`;
-
 let WebpackMd5Hash = require('webpack-md5-hash');
-
 
 module.exports = function(config, webpack) {
 
