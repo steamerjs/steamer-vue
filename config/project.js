@@ -1,26 +1,22 @@
-'use strict';
-
 const path = require('path'),
-      os = require('os'),
-      webpack = require('webpack'),
-      utils = require('steamer-webpack-utils'),
-      steamerConfig = require('./steamer.config'),
-      __basename = path.dirname(__dirname),
-      __env = process.env.NODE_ENV,
-      isProduction = __env === 'production';
+    utils = require('steamer-webpack-utils'),
+    steamerConfig = require('./steamer.config'),
+    __basename = path.dirname(__dirname),
+    __env = process.env.NODE_ENV,
+    isProduction = __env === 'production';
 
-var srcPath = path.resolve(__basename, 'src'),
+let srcPath = path.resolve(__basename, 'src'),
     devPath = path.resolve(__basename, 'dev'),
     distPath = path.resolve(__basename, 'dist'),
     spritePath = path.resolve(__basename, 'src/img/sprites');
 
-var hash = '[hash:6]',
+let hash = '[hash:6]',
     chunkhash = '[chunkhash:6]',
     contenthash = '[contenthash:6]';
 
 // ========================= webpack快捷配置 =========================
 // 基本情况下，你只需要关注这里的配置
-var config = {
+let config = {
     // ========================= webpack环境配置 =========================
     env: __env,
 
@@ -51,8 +47,8 @@ var config = {
         port: steamerConfig.port,    // port for local server
         route: [], // proxy route, 例如: /news/
 
-        "api-port": steamerConfig["api-port"] || 6800, // 后台转发端口
-        "api-route": steamerConfig["api-route"] || [], // 后台转发路径
+        'api-port': steamerConfig['api-port'] || 7000, // 后台转发端口，默认配合 steamer-plugin-mock 使用
+        'api-route': steamerConfig['api-route'] || [], // 后台转发路径
 
         // ========================= webpack自定义配置 =========================
         // 是否显示开发环境下的生成文件
@@ -74,7 +70,7 @@ var config = {
         // javascript 方言，即将支持ts(typescript)
         js: [],
 
-        // 预编译器，默认支持css 和 less. sass, scss 和 stylus 由npm-install-webpack-plugin自动安装
+        // 预编译器，默认支持css 和 less. sass, scss 和 stylus，会自动安装
         style: [
             'css', 'less',
         ],
@@ -85,10 +81,10 @@ var config = {
 
         // 合图，none (无合图), normal (仅1倍图) , retinaonly (仅2倍图), retina (包括1倍及2倍图)
         spriteMode: 'normal',
-        // 默认支持less. sass, scss 和 stylus 由npm-install-webpack-plugin自动安装
+        // 默认支持less. sass, scss 和 stylus，会自动安装
         spriteStyle: 'less',
 
-        // html 模板. 默认支持html 和 ejs, handlebars 和 pug 由npm-install-webpack-plugin自动安装
+        // html 模板. 默认支持html 和 ejs, handlebars 和 pug，会自动安装
         template: [
             'html'
         ],
@@ -204,7 +200,7 @@ config.custom = {
     // webpack module
     getModule: function() {
 
-        var module = {
+        let module = {
             rules: []
         };
 
@@ -220,7 +216,7 @@ config.custom = {
 
     // webpack plugins
     getPlugins: function() {
-        var plugins = [];
+        let plugins = [];
 
         return plugins;
     },
@@ -232,7 +228,7 @@ config.custom = {
                 '$': 'zepto',
                 'vue': 'Vue',
             };
-        } 
+        }
 
         return {};
     },
