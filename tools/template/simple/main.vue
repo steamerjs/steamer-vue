@@ -1,5 +1,5 @@
-<style lang="less" rel="stylesheet/less">
-    @import "./css/main.less";
+<style lang="less" rel="stylesheet/css">
+    @import "./css/main.css";
 
     div {
         margin: 0 auto;
