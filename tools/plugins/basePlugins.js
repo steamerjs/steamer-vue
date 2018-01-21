@@ -19,11 +19,11 @@ module.exports = function(config, webpack) {
 
         if (configWebpack.compress) {
             plugins.push(new UglifyJSPlugin({
-                parallel: {
-                    cache: true,
-                    workers: os.cpus().length,
-                },
-                warnings: true,
+                cache: true,
+                parallel: os.cpus().length,
+                uglifyOptions: {
+                    warnings: false,
+                }
             }));
         }
 

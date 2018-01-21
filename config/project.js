@@ -84,9 +84,9 @@ var config = {
         cssModule: false,
 
         // 合图，none (无合图), normal (仅1倍图) , retinaonly (仅2倍图), retina (包括1倍及2倍图)
-        spriteMode: 'normal',
+        spriteMode: 'retinaonly',
         // 默认支持less. sass, scss 和 stylus 由npm-install-webpack-plugin自动安装
-        spriteStyle: 'less',
+        spriteStyle: 'css',
 
         // html 模板. 默认支持html 和 ejs, handlebars 和 pug 由npm-install-webpack-plugin自动安装
         template: [

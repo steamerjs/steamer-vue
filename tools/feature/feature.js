@@ -11,53 +11,56 @@ var path = require('path'),
 
 var dependency = {
 	template: {
-		html: {
-			'html-loader': '^0.4.5'
-		},
-		handlebars: {
-			'handlebars-loader': '^1.5.0',
-			'handlebars': '^4.0.10'
-		},
-		pug: {
-			'pug-loader': '^2.3.0',
-			'pug': '^2.0.0-rc.2'
-		},
-		ejs: {
-			'ejs-compiled-loader': '^1.1.0',
-			'ejs': '^2.5.6'
-		}
-
-	},
+        html: {
+            'html-loader': '^0.5.5'
+        },
+        handlebars: {
+            'handlebars-loader': '^1.6.0',
+            'handlebars': '^4.0.11'
+        },
+        pug: {
+            'pug-loader': '^2.3.0',
+            'pug': '^2.0.0-rc.4'
+        },
+        ejs: {
+            'ejs-compiled-loader': '^1.1.0',
+            'ejs': '^2.5.7'
+        },
+        art: {
+            'art-template': '^4.12.2',
+            'art-template-loader': '^1.4.3'
+        }
+    },
 	style: {
-		css: {
-			'style-loader': '^0.18.2',
-			'css-loader': '^0.28.4'
-		},
-		less: {
-			'style-loader': '^0.18.2',
-			'css-loader': '^0.28.4',
-			'less': '^2.7.2',
-			'less-loader': '^4.0.5'
-		},
-		sass: {
-			'style-loader': '^0.18.2',
-			'css-loader': '^0.28.4',
-			'node-sass': '^4.5.3',
-			'sass-loader': '^6.0.6'
-		},
-		scss: {
-			'style-loader': '^0.18.2',
-			'css-loader': '^0.28.4',
-			'node-sass': '^4.5.3',
-			'sass-loader': '^6.0.6'
-		},
-		stylus: {
-			'style-loader': '^0.18.2',
-			'css-loader': '^0.28.4',
-			'stylus': '^0.54.5',
-			'stylus-loader': '^3.0.1'
-		}
-	},
+        css: {
+            'style-loader': '^0.19.1',
+            'css-loader': '^0.28.9'
+        },
+        less: {
+            'style-loader': '^0.19.1',
+            'css-loader': '^0.28.9',
+            'less': '^2.7.3',
+            'less-loader': '^4.0.5'
+        },
+        sass: {
+            'style-loader': '^0.19.1',
+            'css-loader': '^0.28.9',
+            'node-sass': '^4.7.2',
+            'sass-loader': '^6.0.6'
+        },
+        scss: {
+            'style-loader': '^0.19.1',
+            'css-loader': '^0.28.9',
+            'node-sass': '^4.7.2',
+            'sass-loader': '^6.0.6'
+        },
+        stylus: {
+            'style-loader': '^0.19.1',
+            'css-loader': '^0.28.9',
+            'stylus': '^0.54.5',
+            'stylus-loader': '^3.0.1'
+        }
+    },
 	js: {
 		
 	}
