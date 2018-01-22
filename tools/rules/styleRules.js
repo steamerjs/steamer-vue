@@ -7,6 +7,11 @@ module.exports = function(config) {
 
     let configWebpack = config.webpack;
 
+    let includePaths = [
+        path.resolve('node_modules'),
+        path.resolve(config.webpack.path.src)
+    ];
+
     // 样式loader
     const commonLoaders = [
         {
@@ -38,7 +43,7 @@ module.exports = function(config) {
                 fallback: 'vue-style-loader',
                 use: commonLoaders
             }),
-            include: path.resolve(config.webpack.path.src)
+            include: includePaths
         },
         less: {
             test: /\.less$/,
@@ -48,6 +53,7 @@ module.exports = function(config) {
                     loader: 'less-loader',
                 }])
             }),
+            include: includePaths
         },
         stylus: {
             test: /\.styl$/,
@@ -57,6 +63,7 @@ module.exports = function(config) {
                     loader: 'stylus-loader',
                 }])
             }),
+            include: includePaths
         },
         sass: {
             test: /\.s(a|c)ss$/,
@@ -66,6 +73,7 @@ module.exports = function(config) {
                     loader: 'sass-loader',
                 }])
             }),
+            include: includePaths
         },
     };
 

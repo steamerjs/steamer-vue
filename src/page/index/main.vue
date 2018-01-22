@@ -1,4 +1,4 @@
-<style lang="less" rel="stylesheet/css">
+<style lang="css" rel="stylesheet/css">
     @import "./css/main.css";
 
     div {
