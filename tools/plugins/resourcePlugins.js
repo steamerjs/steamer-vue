@@ -92,7 +92,7 @@ module.exports = function(config, webpack) {
 
     config.webpack.html.forEach(function(page, key) {
         plugins.push(new HtmlResWebpackPlugin({
-            removeUnMatchedAssets: true,
+            // removeUnMatchedAssets: true,
             env: isProduction ? 'production' : 'development',
             mode: 'html',
             filename: page.key + '.html',
