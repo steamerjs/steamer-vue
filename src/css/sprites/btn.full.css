@@ -1,0 +1,75 @@
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+
+.icon-apple {
+  background-image: url(~btn.png);
+  background-position: -130px 0px;
+  background-size: 162px 162px;
+  width: 32px;
+  height: 32px;
+}
+.icon-apple@2x {
+  background-image: url(~btn.png);
+  background-position: 0px 0px;
+  background-size: 162px 162px;
+  width: 64px;
+  height: 64px;
+}
+.icon-gmail {
+  background-image: url(~btn.png);
+  background-position: -130px -33px;
+  background-size: 162px 162px;
+  width: 32px;
+  height: 32px;
+}
+.icon-gmail@2x {
+  background-image: url(~btn.png);
+  background-position: -65px 0px;
+  background-size: 162px 162px;
+  width: 64px;
+  height: 64px;
+}
+.icon-microsoft {
+  background-image: url(~btn.png);
+  background-position: -130px -66px;
+  background-size: 162px 162px;
+  width: 32px;
+  height: 32px;
+}
+.icon-microsoft@2x {
+  background-image: url(~btn.png);
+  background-position: 0px -65px;
+  background-size: 162px 162px;
+  width: 64px;
+  height: 64px;
+}
+.icon-youtube {
+  background-image: url(~btn.png);
+  background-position: 0px -130px;
+  background-size: 162px 162px;
+  width: 32px;
+  height: 32px;
+}
+.icon-youtube@2x {
+  background-image: url(~btn.png);
+  background-position: -65px -65px;
+  background-size: 162px 162px;
+  width: 64px;
+  height: 64px;
+}

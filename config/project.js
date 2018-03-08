@@ -114,6 +114,10 @@ let config = {
         alias: {
             'utils': path.join(srcPath, '/js/common/utils'),
             'sutils': 'steamer-browserutils/simple',
+            '@': srcPath,
+            'COMMONS': path.join(srcPath, 'commons'),
+            'COMPONENTS': path.join(srcPath, 'components'),
+            'PAGES': path.join(srcPath, 'page'),
         },
 
         // 文件名与哈希, hash, chunkhash, contenthash 与webpack的哈希配置对应

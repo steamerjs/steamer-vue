@@ -2,6 +2,7 @@
     @import "./css/main.css";
 
     div {
+        display: flex;
         margin: 0 auto;
         text-align: center;
     }
@@ -19,7 +20,7 @@ export default {
     },
     render() {
         return (
-            <div class="container">
+            <div id="page" class="container">
                 Hello {this.name}!
             </div>
         );
