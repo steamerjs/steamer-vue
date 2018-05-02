@@ -1,5 +1,5 @@
-<style lang="css" rel="stylesheet/css">
-    @import "./css/main.css";
+<style lang="less" rel="stylesheet/css">
+    @import "./css/main.less";
 
     div {
         display: flex;
