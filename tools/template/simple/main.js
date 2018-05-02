@@ -1,7 +1,10 @@
+import 'COMMON/polyfill.js';
 import Vue from 'vue';
-import Main from './main.vue';
+import App from './main.vue';
+import store from './store';
 
 new Vue({
-    el: '#main',
-    render: h => h(Main)
+    el: '#page',
+    store,
+    render: h => h(App)
 });

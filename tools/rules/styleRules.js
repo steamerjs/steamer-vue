@@ -1,15 +1,17 @@
-const path = require('path'),
-    merge = require('lodash.merge');
+const path = require('path');
+const merge = require('lodash.merge');
 
-let ExtractTextPlugin = require('extract-text-webpack-plugin');
+let MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = function(config) {
 
     let configWebpack = config.webpack;
+    let isProduction = config.env === 'production';
 
     let includePaths = [
         path.resolve('node_modules'),
-        path.resolve(config.webpack.path.src)
+        config.webpack.path.src,
+        path.join(configWebpack.path.src, 'css/sprites')
     ];
 
     // 样式loader
@@ -27,7 +29,10 @@ module.exports = function(config) {
                 localIdentName: '[name]-[local]-[hash:base64:5]',
                 module: config.webpack.cssModule,
                 autoprefixer: true,
-                minimize: true
+                minimize: true,
+                sourceMap: configWebpack.cssSourceMap,
+                // includePaths: includePaths,
+                importLoaders: 2
             }
         },
         {
@@ -35,105 +40,65 @@ module.exports = function(config) {
         }
     ];
 
+    if (isProduction) {
+        commonLoaders.splice(0, 0, { loader: MiniCssExtractPlugin.loader });
+    }
+    else {
+        commonLoaders.splice(0, 0, { loader: 'vue-style-loader' });
+    }
+
     const styleRules = {
         css: {
             test: /\.css$/,
-            // 单独抽出样式文件
-            loader: ExtractTextPlugin.extract({
-                fallback: 'vue-style-loader',
-                use: commonLoaders
-            }),
+            use: commonLoaders,
             include: includePaths
         },
         less: {
             test: /\.less$/,
-            loader: ExtractTextPlugin.extract({
-                fallback: 'vue-style-loader',
-                use: merge([], commonLoaders).concat([{
-                    loader: 'less-loader',
-                }])
-            }),
+            use: merge([], commonLoaders).concat([{
+                loader: 'less-loader',
+                options: {
+                    sourceMap: configWebpack.cssSourceMap,
+                    // paths: includePaths
+                }
+            }]),
             include: includePaths
         },
         stylus: {
             test: /\.styl$/,
-            loader: ExtractTextPlugin.extract({
-                fallback: 'vue-style-loader',
-                use: merge([], commonLoaders).concat([{
-                    loader: 'stylus-loader',
-                }])
-            }),
+            use: merge([], commonLoaders).concat([{
+                loader: 'stylus-loader'
+            }]),
             include: includePaths
         },
         sass: {
             test: /\.s(a|c)ss$/,
-            loader: ExtractTextPlugin.extract({
-                fallback: 'vue-style-loader',
-                use: merge([], commonLoaders).concat([{
-                    loader: 'sass-loader',
-                }])
-            }),
+            use: merge([], commonLoaders).concat([{
+                loader: 'sass-loader',
+                options: {
+                    sourceMap: configWebpack.cssSourceMap,
+                }
+            }]),
             include: includePaths
-        },
+        }
     };
 
     // vue-loader的样式loader配置
     let vueLoader = {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: {
-            loaders: {}
-        },
         exclude: /node_modules/
-    };
-
-    let vueStyleLoaderMap = {
-        css: ExtractTextPlugin.extract({
-            use: commonLoaders,
-            fallback: 'vue-style-loader'
-        }),
-        less: ExtractTextPlugin.extract({
-            use: merge([], commonLoaders).concat([{
-                loader: 'less-loader',
-            }]),
-            fallback: 'vue-style-loader'
-        }),
-        sass: ExtractTextPlugin.extract({
-            use: merge([], commonLoaders).concat([{
-                loader: 'sass-loader',
-            }]),
-            fallback: 'vue-style-loader'
-        }),
-        scss: ExtractTextPlugin.extract({
-            use: merge([], commonLoaders).concat([{
-                loader: 'sass-loader',
-            }]),
-            fallback: 'vue-style-loader'
-        }),
-        stylus: ExtractTextPlugin.extract({
-            use: merge([], commonLoaders).concat([{
-                loader: 'stylus-loader',
-            }]),
-            fallback: 'vue-style-loader'
-        }),
-        styl: ExtractTextPlugin.extract({
-            use: merge([], commonLoaders).concat([{
-                loader: 'stylus-loader',
-            }]),
-            fallback: 'vue-style-loader'
-        }),
     };
 
     let rules = [];
 
-    configWebpack.style.forEach((style) => {
-        vueLoader.options.loaders[style] = vueStyleLoaderMap[style];
-        style = (style === 'scss') ? 'sass' : style;
+    configWebpack.style.forEach((styleParam) => {
+        let style = (styleParam === 'scss') ? 'sass' : styleParam;
         let rule = styleRules[style] || '';
         rule && rules.push(rule);
     });
 
-    rules.push(vueLoader);
+    rules.unshift(vueLoader);
 
     return rules;
 };

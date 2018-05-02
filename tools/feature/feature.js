@@ -1,67 +1,67 @@
 // used for install dependencies and files to support certain kinds of features
 
-var path = require('path'),
-	project = require('../../config/project'),
-	pkgJson = require('../../package.json'),
-	merge = require('lodash.merge'),
-	spawnSync = require('child_process').spawnSync,
-	utils = require('steamer-webpack-utils');
+let path = require('path');
+let project = require('../../config/project');
+let pkgJson = require('../../package.json');
+let merge = require('lodash.merge');
+let spawnSync = require('child_process').spawnSync;
+let utils = require('steamer-webpack-utils');
 
-var dependency = {
-	template: {
+let dependency = {
+    template: {
         html: {
             'html-loader': '^0.5.5'
         },
         handlebars: {
-            'handlebars-loader': '^1.6.0',
+            'handlebars-loader': '^1.7.0',
             'handlebars': '^4.0.11'
         },
         pug: {
-            'pug-loader': '^2.3.0',
-            'pug': '^2.0.0-rc.4'
+            'pug-loader': '^2.4.0',
+            'pug': '^2.0.3'
         },
         ejs: {
-            'ejs-compiled-loader': '^1.1.0',
-            'ejs': '^2.5.7'
+            'ejs-loader': '^1.1.0',
+            'ejs': '^2.5.9'
         },
         art: {
             'art-template': '^4.12.2',
             'art-template-loader': '^1.4.3'
         }
     },
-	style: {
+    style: {
         css: {
-            'style-loader': '^0.19.1',
-            'css-loader': '^0.28.9'
+            'style-loader': '^0.21.0',
+            'css-loader': '^0.28.11'
         },
         less: {
-            'style-loader': '^0.19.1',
-            'css-loader': '^0.28.9',
-            'less': '^2.7.3',
-            'less-loader': '^4.0.5'
+            'style-loader': '^0.21.0',
+            'css-loader': '^0.28.11',
+            'less': '^3.0.1',
+            'less-loader': '^4.1.0'
         },
         sass: {
-            'style-loader': '^0.19.1',
-            'css-loader': '^0.28.9',
-            'node-sass': '^4.7.2',
-            'sass-loader': '^6.0.6'
+            'style-loader': '^0.21.0',
+            'css-loader': '^0.28.11',
+            'node-sass': '^4.8.3',
+            'sass-loader': '^7.0.1'
         },
         scss: {
-            'style-loader': '^0.19.1',
-            'css-loader': '^0.28.9',
-            'node-sass': '^4.7.2',
-            'sass-loader': '^6.0.6'
+            'style-loader': '^0.21.0',
+            'css-loader': '^0.28.11',
+            'node-sass': '^4.8.3',
+            'sass-loader': '^7.0.1'
         },
         stylus: {
-            'style-loader': '^0.19.1',
-            'css-loader': '^0.28.9',
+            'style-loader': '^0.21.0',
+            'css-loader': '^0.28.11',
             'stylus': '^0.54.5',
-            'stylus-loader': '^3.0.1'
+            'stylus-loader': '^3.0.2'
         }
     },
-	js: {
-		
-	}
+    js: {
+
+    }
 };
 
 let files = {

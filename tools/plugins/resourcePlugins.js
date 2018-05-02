@@ -1,19 +1,21 @@
 const path = require('path');
 
-let Clean = require('clean-webpack-plugin'),
-    CopyWebpackPlugin = require('copy-webpack-plugin-hash'),
-    WriteFilePlugin = require('write-file-webpack-plugin'),
-    FileWebpackPlugin = require('file-webpack-plugin'),
-    HappyPack = require('happypack'),
-    HtmlResWebpackPlugin = require('html-res-webpack-plugin'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin');
+let Clean = require('clean-webpack-plugin');
+let CopyWebpackPlugin = require('copy-webpack-plugin-hash');
+let WriteFilePlugin = require('write-file-webpack-plugin');
+let FileWebpackPlugin = require('file-webpack-plugin');
+let HappyPack = require('happypack');
+let HtmlResWebpackPlugin = require('html-res-webpack-plugin');
+let MiniCssExtractPlugin = require('mini-css-extract-plugin');
+let VueLoaderPlugin = require('vue-loader').VueLoaderPlugin;
 
 module.exports = function(config, webpack) {
 
-    let configWebpack = config.webpack,
-        isProduction = config.env === 'production';
+    let configWebpack = config.webpack;
+    let isProduction = config.env === 'production';
 
     let plugins = [
+        new VueLoaderPlugin(),
         new HappyPack({
             id: '1',
             verbose: false,
@@ -24,15 +26,10 @@ module.exports = function(config, webpack) {
                 }
             }]
         }),
-        new ExtractTextPlugin({
-            filename: (getPath) => {
-                return getPath('css/' + config.webpack.contenthashName + '.css').replace('css/js', 'css');
-            },
-            allChunks: true,
-            // 开发环境禁用，生产环境根据配置开启或禁用
-            disable: !(isProduction && config.webpack.extractCss) || !isProduction
-        }),
-
+        new MiniCssExtractPlugin({
+            filename: `css/${config.webpack.contenthashName}.css`,
+            chunkFilename: 'css/[name]-[id]-[hash].css'
+        })
     ];
 
     if (isProduction) {

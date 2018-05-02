@@ -1,26 +1,25 @@
-<style lang="less" rel="stylesheet/css">
-    @import "./css/main.css";
-
-    div {
-        margin: 0 auto;
-        text-align: center;
-    }
+<style lang="less">
+@import "./index.less";
 </style>
 
 <script>
 export default {
     data() {
         return {
-            name: ' world'
+
         };
-    },
-    created() {
-        console.log('hello steamer-vue');
     },
     render() {
         return (
-            <div class="container">
-                Hello {this.name}!
+            <div class="wrapper">
+                <div class="logo"></div>
+                <h2 class="title">steamer-vue</h2>
+                <div class="text">Simple 模板</div>
+                <div class="link">
+                    <a class="icon-github" href="https://github.com/steamerjs/steamer-react" target="_blank" title="Github"></a>
+                    <a class="icon-docs" href="https://steamerjs.github.io/" target="_blank" title="文档"></a>
+                    <a class="icon-author" href="https://github.com/lcxfs1991" target="_blank" title="作者"></a>
+                </div>
             </div>
         );
     }

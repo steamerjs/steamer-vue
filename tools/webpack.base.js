@@ -1,21 +1,22 @@
-const path = require('path'),
-    fs = require('fs'),
-    webpack = require('webpack'),
-    webpackMerge = require('webpack-merge');
+const path = require('path');
+const fs = require('fs');
+const webpack = require('webpack');
+const webpackMerge = require('webpack-merge');
 
-let config = require('../config/project'),
-    configWebpack = config.webpack,
-    configWebpackMerge = config.webpackMerge,
-    configCustom = config.custom,
-    isProduction = config.env === 'production';
+let config = require('../config/project');
+let configWebpack = config.webpack;
+let configWebpackMerge = config.webpackMerge;
+let configCustom = config.custom;
+let isProduction = config.env === 'production';
 
 let baseConfig = {
+    mode: isProduction ? 'production' : 'development',
     context: configWebpack.path.src,
     entry: configWebpack.entry,
     output: {
         publicPath: isProduction ? configWebpack.cdn : configWebpack.webserver,
         path: isProduction ? configWebpack.path.dist : configWebpack.path.dev,
-        filename: configWebpack.chunkhashName + '.js',
+        filename: `js/${configWebpack.chunkhashName}.js`,
         chunkFilename: 'chunk/' + configWebpack.chunkhashName + '.js'
     },
     module: {
@@ -29,13 +30,12 @@ let baseConfig = {
         ],
         extensions: [
             '.ts', '.tsx', '.js', '.jsx', '.css', '.scss', 'sass', '.less', '.styl',
-            '.png', '.jpg', '.jpeg', '.ico', '.ejs', '.pug', '.handlebars', '.swf', '.vue'
+            '.png', '.jpg', '.jpeg', '.ico', '.ejs', '.pug', '.art', '.handlebars', 'swf', 'svg',
         ],
         alias: {}
     },
-    plugins: [
-        new webpack.NoEmitOnErrorsPlugin(),
-    ],
+    plugins: [],
+    optimization: {},
     watch: !isProduction,
     devtool: isProduction ? configWebpack.sourceMap.production : configWebpack.sourceMap.development,
     performance: {
@@ -63,6 +63,7 @@ plugins.forEach((plugin) => {
 
 baseConfig.module.rules = baseConfigRules;
 baseConfig.plugins = baseConfigPlugins;
+baseConfig.optimization = require('./optimization')(config, webpack);
 
 // console.log(rules, plugins);
 

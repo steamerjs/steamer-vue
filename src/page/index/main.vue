@@ -1,29 +1,16 @@
-<style lang="less" rel="stylesheet/css">
-    @import "./css/main.less";
-
-    div {
-        display: flex;
-        margin: 0 auto;
-        text-align: center;
-    }
-</style>
+<template>
+    <div id="page">
+        <router-view></router-view>
+    </div>
+</template>
 
 <script>
 export default {
-    data() {
-        return {
-            name: ' world'
-        };
-    },
-    created() {
-        console.log('hello steamer-vue');
-    },
-    render() {
-        return (
-            <div id="page" class="container">
-                Hello {this.name}!
-            </div>
-        );
+    components: {
     }
-};
+}
 </script>
+
+<style>
+
+</style>
