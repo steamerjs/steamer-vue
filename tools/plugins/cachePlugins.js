@@ -1,4 +1,3 @@
-let WebpackMd5Hash = require('webpack-md5-hash');
 
 module.exports = function(config, webpack) {
 
@@ -11,8 +10,7 @@ module.exports = function(config, webpack) {
                 hashFunction: 'sha256',
                 hashDigest: 'hex',
                 hashDigestLength: 10
-            }),
-            new WebpackMd5Hash()
+            })
         ];
     }
 
