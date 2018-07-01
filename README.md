@@ -15,6 +15,7 @@ npm i -g steamerjs
 steamer kit --add https://github.com/steamerjs/steamer-vue.git
 // 基于脚手架初始化项目
 steamer
+```
 
 * 直接从github clone 下来
 
