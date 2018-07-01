@@ -87,8 +87,17 @@ module.exports = function(config) {
     let vueLoader = {
         test: /\.vue$/,
         loader: 'vue-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        options: {}
     };
+
+    // typescript 的配置
+    if (configWebpack.js.includes('ts')) {
+        vueLoader.options.loaders = {
+            ts: 'ts-loader',
+            tsx: 'babel-loader!ts-loader'
+        };
+    }
 
     let rules = [];
 

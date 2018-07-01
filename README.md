@@ -51,3 +51,4 @@ npm run dist 或 npm run pub
 
 * [webpack使用优化（基本篇）](https://github.com/lcxfs1991/blog/issues/2)
 * [webpack Performance: The Comprehensive Guide](https://github.com/lcxfs1991/blog/issues/15)
+* [Vue-TypeScript全面教程](https://juejin.im/post/5a38830351882506a463bbcc)

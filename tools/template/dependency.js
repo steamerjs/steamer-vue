@@ -5,4 +5,7 @@ module.exports = {
     'spa': {
         'vue-router': '^3.0.1',
     },
+    'ts': {
+
+    }
 };

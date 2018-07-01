@@ -4,7 +4,26 @@ module.exports = function(config) {
     let configWebpack = config.webpack;
 
     // js方言
-    const jsRules = {};
+    const jsRules = {
+        ts: {
+            test: /\.tsx?$/,
+            use: [
+                {
+                    loader: 'babel-loader',
+                    options: {
+                        cacheDirectory: './.cache/'
+                    }
+                },
+                {
+                    loader: 'ts-loader',
+                    options: {
+                        appendTsxSuffixTo: [/\.vue$/]
+                    }
+                }
+            ],
+            exclude: /node_modules/,
+        },
+    };
 
     let rules = [
         {

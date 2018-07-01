@@ -71,7 +71,7 @@ let config = {
         cssSourceMap: false,
 
         // javascript 方言，即将支持ts(typescript)
-        js: [],
+        js: ['ts'],
 
         // 预编译器，默认支持css 和 less. sass, scss 和 stylus，会自动安装
         style: [
@@ -115,6 +115,7 @@ let config = {
 
         // webpack resolve.alias 包别名
         alias: {
+            'vue$': 'vue/dist/vue.esm.js',
             '@': path.join(srcPath),
             'IMG': path.join(srcPath, '/img'),
             'CSS': path.join(srcPath, '/css'),
@@ -147,7 +148,7 @@ let config = {
         entry: utils.filterJsFileByCmd(utils.getJsEntry({
             srcPath: path.join(srcPath, 'page'),
             fileName: 'main',
-            extensions: ['js', 'jsx'],
+            extensions: ['js', 'jsx', 'ts', 'tsx'],
             level: 1
         })),
 

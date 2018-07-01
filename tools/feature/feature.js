@@ -21,8 +21,8 @@ let dependency = {
             'pug': '^2.0.3'
         },
         ejs: {
-            'ejs-loader': '^1.1.0',
-            'ejs': '^2.5.9'
+            'ejs-loader': '^0.3.1',
+            'ejs': '^2.6.1'
         },
         art: {
             'art-template': '^4.12.2',
@@ -60,14 +60,38 @@ let dependency = {
         }
     },
     js: {
-
+        ts: {
+            '@types/node': '^10.3.3',
+            'ts-loader': '^4.4.1',
+            'tslint': '^5.10.0',
+            'tslint-config-standard': '^7.0.0',
+            'typescript': '^2.9.2',
+            'vue-property-decorator': '^6.1.0',
+            'vuex-class': '^0.3.1',
+            'vue-class-component': '^6.2.0'
+        }
     }
 };
 
 let files = {
     template: {},
     style: {},
-    js: {}
+    js: {
+        ts: [
+            {
+                src: path.join(__dirname, './tsconfig.json'),
+                dist: path.resolve('tsconfig.json')
+            },
+            {
+                src: path.join(__dirname, './tslint.json'),
+                dist: path.resolve('tslint.json')
+            },
+            {
+                src: path.join(__dirname, './types'),
+                dist: path.resolve('src/types')
+            }
+        ]
+    }
 };
 
 module.exports = {

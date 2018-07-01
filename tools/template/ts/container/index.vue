@@ -2,32 +2,37 @@
 @import "./index.less";
 </style>
 
-<script>
-export default {
-    data() {
-        return {
+<script lang="tsx">
+import Vue, {
+    CreateElement
+} from 'vue';
+import {
+    Component
+} from 'vue-property-decorator';
 
-        };
-    },
-    methods: {
-        jumpToDetail() {
-            this.$router.push('/detail');
-        },
-        jumpToComment() {
-            this.$router.push('/comment');
-        },
-        jumpToIndex() {
-            this.$router.push('/');
-        }
-    },
-    render() {
-        console.log();
-        console.log('index mounted');
+@Component({})
+export default class Index extends Vue {
+
+    template:string = 'TypeScript SPA'
+
+    jumpToDetail():void {
+        this.$router.push('/detail');
+    }
+
+    jumpToComment():void {
+        this.$router.push('/comment');
+    }
+
+    jumpToIndex():void {
+        this.$router.push('/');
+    }
+
+    render(h: CreateElement) {
         return (
             <div class="wrapper">
                 <div class="logo"></div>
                 <h2 class="title">steamer-vue</h2>
-                <div class="text">SPA 模板</div>
+                <div class="text">{this.template} 模板</div>
                 <div class="page">
                     <a onClick={this.jumpToIndex}>index</a>
                     <a onClick={this.jumpToDetail}>detail</a>
@@ -41,5 +46,5 @@ export default {
             </div>
         );
     }
-};
+}
 </script>

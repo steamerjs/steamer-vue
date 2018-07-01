@@ -4,14 +4,14 @@ import staticRoutes from './staticRoutes';
 
 import store from '../store/';
 import {
-    CHANGE_URL
+    CHANGE_URL,
 } from '../store/mutation_types';
 
 Vue.use(Router);
 
 const router = new Router({
     mode: 'history',
-    routes: staticRoutes
+    routes: staticRoutes,
 });
 
 router.beforeEach((to, from, next) => {

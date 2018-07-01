@@ -7,18 +7,18 @@ const routes = [
     {
         name: 'index',
         path: '/',
-        component: Index
+        component: Index,
     },
     {
         name: 'detail',
         path: '/detail',
-        component: Detail
+        component: Detail,
     },
     {
         name: 'comment',
         path: '/comment',
-        component: Comment
-    }
+        component: Comment,
+    },
 ];
 
 export default routes;
