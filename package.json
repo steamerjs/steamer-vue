@@ -1,6 +1,6 @@
 {
   "name": "steamer-vue",
-  "version": "4.0.0-beta.2",
+  "version": "4.0.0-beta.3",
   "description": "alloyteam vue starterkit",
   "main": "./.steamer/steamer-vue.js",
   "scripts": {
