@@ -71,7 +71,7 @@ let config = {
         cssSourceMap: false,
 
         // javascript 方言，即将支持ts(typescript)
-        js: ['ts'],
+        js: [],
 
         // 预编译器，默认支持css 和 less. sass, scss 和 stylus，会自动安装
         style: [
